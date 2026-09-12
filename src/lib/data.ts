@@ -19,7 +19,6 @@ export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
-  { href: "/case-studies", label: "Case Studies" },
   { href: "/careers", label: "Careers" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
@@ -122,59 +121,217 @@ export const services = [
 export { industries, type Industry } from "./industries";
 
 export const projects = [
+  // E-COMMERCE
   {
-    slug: "nordic-commerce",
-    title: "Nordic Commerce",
+    slug: "grovedale-flooring",
+    title: "Grovedale Flooring",
     category: "E-commerce",
-    year: "2025",
-    summary: "A multi-currency storefront with custom inventory sync and conversion-focused checkout.",
-    outcome: "38% lift in checkout completion",
+    year: "2023",
+    summary:
+      "A professional flooring website built to showcase flooring solutions and provide a seamless customer browsing experience.",
+    outcome: "Modern flooring product experience",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/grovedaleflooring-1.jpg",
+    projectUrl: "http://grovedaleflooring.com.au",
+    color: "#0D9F8A",
+  },
+
+  {
+    slug: "whole-nutrition",
+    title: "Whole Nutrition",
+    category: "E-commerce",
+    year: "2023",
+    summary:
+      "A nutrition-focused website designed to present products and services through a clean and user-friendly digital experience.",
+    outcome: "Improved online customer experience",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/nutrition-1.jpg",
+    projectUrl: "https://wholenutrition.co.in/",
+    color: "#E85D04",
+  },
+
+  {
+    slug: "utah-senior-planning",
+    title: "Utah Senior Planning",
+    category: "E-commerce",
+    year: "2023",
+    summary:
+      "A professional web platform created to provide clear information and an accessible digital experience for senior planning services.",
+    outcome: "Accessible and informative web experience",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/utahseniorplanning-1.jpg",
+    projectUrl: "https://www.utahseniorplanning.com/",
+    color: "#1B6BFF",
+  },
+
+  // EDUCATION
+  {
+    slug: "meritto",
+    title: "MERITTO",
+    category: "Education",
+    year: "2023",
+    summary:
+      "An education-focused digital platform built to provide a smooth and accessible online experience for students and education services.",
+    outcome: "Streamlined digital education experience",
+    technology: "PHP",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/merittoonline-1.jpg",
+    projectUrl: "http://meritto.in/",
+    color: "#6B5B95",
+  },
+
+  {
+    slug: "simbans",
+    title: "Simbans",
+    category: "Education",
+    year: "2023",
+    summary:
+      "A modern education technology platform designed to deliver a user-friendly online experience and showcase educational products.",
+    outcome: "Improved online education experience",
+    technology: "Shopify",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/simbans-1.jpg",
+    projectUrl: "https://www.simbans.com/",
+    color: "#1B6BFF",
+  },
+
+  {
+    slug: "bkj-public-school",
+    title: "BKJ Public School",
+    category: "Education",
+    year: "2023",
+    summary:
+      "A professional school website designed to present academic information, facilities, and school activities through a clear digital experience.",
+    outcome: "Modern school web presence",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/bkj-1.jpg",
+    projectUrl: "https://bkjsappleorchardschool.in/",
+    color: "#2A9D8F",
+  },
+
+  // FOOD & RESTAURANT
+  {
+    slug: "starlite-cuisine",
+    title: "Starlite Cuisine",
+    category: "Food & Restaurant",
+    year: "2023",
+    summary:
+      "A professional restaurant website designed to showcase the brand, menu, and dining experience through an engaging digital presence.",
+    outcome: "Modern and engaging restaurant web experience",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/starlitecuisine-1.jpg",
+    projectUrl: "https://starlitecuisine.com",
+    color: "#E85D04",
+  },
+
+  // HEALTHCARE
+  {
+    slug: "grovedale-flooring",
+    title: "Grovedale Flooring",
+    category: "Healthcare",
+    year: "2023",
+    summary:
+      "A professional healthcare-focused digital experience designed to present services and information through a clean and accessible website.",
+    outcome: "Modern and accessible healthcare web experience",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/grovedaleflooring-1.jpg",
+    projectUrl: "http://grovedaleflooring.com.au",
     color: "#0D9F8A",
   },
   {
-    slug: "pulse-health",
-    title: "Pulse Health",
+    slug: "whole-nutrition",
+    title: "Whole Nutrition",
     category: "Healthcare",
-    year: "2025",
-    summary: "Patient scheduling and telehealth web app with secure records and responsive UX.",
-    outcome: "2.4× faster appointment booking",
-    color: "#1B6BFF",
-  },
-  {
-    slug: "fleetline",
-    title: "FleetLine",
-    category: "Mobile App",
-    year: "2024",
-    summary: "Android + iOS logistics app for live fleet tracking and driver workflows.",
-    outcome: "Reduced dispatch delays by 27%",
+    year: "2023",
+    summary:
+      "A nutrition-focused website built to provide users with a clear, engaging, and easy-to-navigate digital experience.",
+    outcome: "Improved online nutrition experience",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/nutrition-1.jpg",
+    projectUrl: "https://wholenutrition.co.in/",
     color: "#E85D04",
   },
   {
-    slug: "campus-os",
-    title: "Campus OS",
-    category: "Education",
-    year: "2024",
-    summary: "Learning portal with content delivery, assessments, and admin analytics.",
-    outcome: "12k+ active monthly learners",
-    color: "#6B5B95",
-  },
-  {
-    slug: "harbor-stays",
-    title: "Harbor Stays",
-    category: "Travel",
-    year: "2024",
-    summary: "Travel booking experience with immersive destination storytelling and SEO.",
-    outcome: "61% organic traffic growth",
-    color: "#0077B6",
-  },
-  {
-    slug: "atelier-pos",
-    title: "Atelier POS",
-    category: "Retail Software",
+    slug: "utah-senior-planning",
+    title: "Utah Senior Planning",
+    category: "Healthcare",
     year: "2023",
-    summary: "Retail POS and inventory suite for multi-location boutique brands.",
-    outcome: "Unified 18 store locations",
-    color: "#2A9D8F",
+    summary:
+      "A senior planning website designed to provide clear information and an accessible digital experience for users seeking planning services.",
+    outcome: "Accessible and informative digital experience",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/utahseniorplanning-1.jpg",
+    projectUrl: "https://www.utahseniorplanning.com/",
+    color: "#1B6BFF",
+  },
+
+
+  // REAL ESTATE
+  {
+    slug: "grovedale-flooring",
+    title: "Grovedale Flooring",
+    category: "Real Estate",
+    year: "2023",
+    summary:
+      "A professional real estate-focused website designed to showcase services and properties through a clean and engaging digital experience.",
+    outcome: "Modern real estate web experience",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/grovedaleflooring-1.jpg",
+    projectUrl: "http://grovedaleflooring.com.au",
+    color: "#0D9F8A",
+  },
+  {
+    slug: "whole-nutrition",
+    title: "Whole Nutrition",
+    category: "Real Estate",
+    year: "2023",
+    summary:
+      "A user-friendly website built to present information and services with a clear, professional, and responsive digital experience.",
+    outcome: "Improved online customer experience",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/nutrition-1.jpg",
+    projectUrl: "https://wholenutrition.co.in/",
+    color: "#E85D04",
+  },
+  {
+    slug: "utah-senior-planning",
+    title: "Utah Senior Planning",
+    category: "Real Estate",
+    year: "2023",
+    summary:
+      "A professional service website designed to provide clear information and an accessible digital experience for its audience.",
+    outcome: "Accessible and informative web experience",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/utahseniorplanning-1.jpg",
+    projectUrl: "https://www.utahseniorplanning.com/",
+    color: "#1B6BFF",
+  },
+
+  // TOURS & TRAVEL
+  {
+    slug: "kathiroll-eatery",
+    title: "Kathiroll Eatery",
+    category: "Tours & Travel",
+    year: "2023",
+    summary:
+      "A professional website designed to create an engaging online presence with a simple and user-friendly digital experience.",
+    outcome: "Modern and engaging web experience",
+    technology: "WordPress",
+    image:
+      "https://outstripinfotech.com/wp-content/uploads/2023/01/kathirolleatery-1.jpg",
+    projectUrl: "http://www.thekathirollexpress.com",
+    color: "#0077B6",
   },
 ];
 
@@ -204,16 +361,16 @@ export const caseStudies = [
     services: ["Web Development", "UI/UX Design"],
   },
   {
-    slug: "fleet-mobile-ops",
-    title: "Digitizing fleet operations on the road",
-    client: "FleetLine",
-    industry: "Logistics",
+    slug: "food-ordering-platform",
+    title: "Building a modern ordering experience for a restaurant group",
+    client: "Food Hub",
+    industry: "Food & Restaurant",
     challenge:
-      "Dispatchers relied on calls and spreadsheets; drivers lacked a reliable mobile workflow.",
+      "Manual phone orders and a disconnected reservation system capped growth across locations.",
     approach:
-      "Built native-feeling cross-platform apps with live tracking, status updates, and offline resilience.",
-    results: ["27% fewer dispatch delays", "Real-time visibility for ops", "Higher driver adoption"],
-    services: ["Mobile Apps", "API Integration"],
+      "Built a unified online ordering, reservations, and loyalty platform with real-time kitchen integration.",
+    results: ["42% increase in online orders", "30% fewer reservation no-shows", "Unified ordering across all locations"],
+    services: ["Web Development", "UI/UX Design", "E-commerce"],
   },
 ];
 

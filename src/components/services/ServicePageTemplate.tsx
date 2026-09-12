@@ -10,7 +10,9 @@ import { StaggerChildren } from "@/components/ui/StaggerChildren";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { FeatureIcon } from "@/components/industries/FeatureIcon";
-import { ServiceTechIcon } from "@/components/services/ServiceTechIcon";
+import { TechLogo } from "@/components/services/TechLogo";
+import { ProcessStepper } from "@/components/services/ProcessStepper";
+import { BenefitsGrid } from "@/components/services/BenefitsGrid";
 import { ServiceEnquiryForm } from "@/components/services/ServiceEnquiryForm";
 import { ServiceFaqAccordion } from "@/components/services/ServiceFaqAccordion";
 import { ProcessSection } from "../home/ProcessSection";
@@ -156,8 +158,8 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
 
       {/* WHY CHOOSE THIS SERVICE */}
       <section className="section-pad relative overflow-hidden border-t border-border bg-surface-soft py-20 md:py-28">
-        <div className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-accent/[0.06] blur-[120px]" />
-        <div className="pointer-events-none absolute -left-40 bottom-10 h-80 w-80 rounded-full bg-accent/[0.04] blur-[100px]" />
+        <div className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-accent/6 blur-[120px]" />
+        <div className="pointer-events-none absolute -left-40 bottom-10 h-80 w-80 rounded-full bg-accent/4 blur-[100px]" />
 
         <div className="container-wide relative z-10">
           <Reveal>
@@ -264,11 +266,9 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
       </section>
 
       {/* TECHNOLOGIES */}
-      {/* TECHNOLOGIES */}
       <section className="section-pad relative overflow-hidden border-t border-border bg-surface-soft py-20 md:py-28">
-        {/* Background decoration */}
-        <div className="pointer-events-none absolute -right-40 top-10 h-96 w-96 rounded-full bg-accent/[0.05] blur-[120px]" />
-        <div className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-accent/[0.04] blur-[120px]" />
+        <div className="pointer-events-none absolute -right-40 top-10 h-96 w-96 rounded-full bg-accent/5 blur-[120px]" />
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-accent/4 blur-[120px]" />
 
         <div className="container-wide relative z-10">
           <Reveal>
@@ -284,51 +284,18 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
               <div
                 key={tech.name}
                 data-stagger-item
-                className="
-            group relative overflow-hidden rounded-2xl
-            border border-border bg-surface
-            p-5
-            transition-all duration-500
-            hover:-translate-y-1
-            hover:border-accent/40
-            hover:shadow-[0_24px_60px_-30px_rgba(13,159,138,0.35)]
-          "
+                className="group relative overflow-hidden rounded-lg border border-border bg-surface p-2 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_24px_60px_-30px_rgba(13,159,138,0.35)]"
               >
                 {/* Hover glow */}
-                <div
-                  className="
-              pointer-events-none absolute -right-16 -top-16
-              h-32 w-32 rounded-full
-              bg-accent/[0.08] blur-3xl
-              opacity-0 transition-opacity duration-500
-              group-hover:opacity-100
-            "
-                />
+                <div className="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-accent/8 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
 
-                <div className="relative z-10 flex items-start gap-5">
+                <div className="relative z-10 flex items-start">
                   {/* Technology Logo */}
-                  <div
-                    className="
-                flex h-16 w-16 shrink-0 items-center justify-center
-                rounded-2xl border border-border
-                bg-white
-                p-3
-                shadow-sm
-                transition-all duration-500
-                group-hover:scale-105
-                group-hover:border-accent/30
-                group-hover:shadow-md
-              "
-                  >
-                    <img
-                      src={`/images/technologies/${tech.icon}.png`}
-                      alt={`${tech.name} logo`}
-                      className="
-                  h-full w-full
-                  object-contain
-                  transition-transform duration-500
-                  group-hover:scale-110
-                "
+                  <div className="flex h-24 w-24 shrink-0 items-center justify-center transition-all duration-500 group-hover:scale-105">
+                    <TechLogo
+                      icon={tech.icon}
+                      name={tech.name}
+                      className="h-full w-full transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
 
@@ -338,34 +305,15 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
                       <p className="font-display text-base font-semibold text-ink">
                         {tech.name}
                       </p>
-
-                      <span
-                        className="
-                    h-1.5 w-1.5 rounded-full
-                    bg-accent
-                    opacity-0
-                    transition-opacity duration-300
-                    group-hover:opacity-100
-                  "
-                      />
+                      <span className="h-1.5 w-1.5 rounded-full bg-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                     </div>
 
-                    <p className="mt-1.5 text-sm leading-6 text-muted">
-                      {tech.description}
-                    </p>
+                    <p className="mt-1.5 text-sm leading-6 text-muted">{tech.description}</p>
                   </div>
                 </div>
 
                 {/* Bottom accent line */}
-                <div
-                  className="
-              absolute bottom-0 left-5 right-5
-              h-px origin-left scale-x-0
-              bg-gradient-to-r from-accent/70 via-accent/30 to-transparent
-              transition-transform duration-500
-              group-hover:scale-x-100
-            "
-                />
+                <div className="absolute bottom-0 left-5 right-5 h-px origin-left scale-x-0 bg-linear-to-r from-accent/70 via-accent/30 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
               </div>
             ))}
           </StaggerChildren>
@@ -373,8 +321,14 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
       </section>
 
       {/* PROCESS */}
-      <section id="process" className="section-pad border-t border-border bg-ink py-16 text-white md:py-20">
-        <div className="container-wide">
+      <section
+        id="process"
+        className="section-pad relative overflow-hidden border-t border-white/10 bg-ink py-18 text-white md:py-20"
+      >
+        <div className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-accent/8 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-accent/5 blur-[120px]" />
+
+        <div className="container-wide relative">
           <Reveal>
             <SectionHeading
               light
@@ -384,27 +338,16 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
             />
           </Reveal>
 
-          <StaggerChildren className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {service.process.map((step) => (
-              <article
-                key={step.step}
-                data-stagger-item
-                className="group border-t border-white/10 pt-7 transition-transform duration-500 hover:-translate-y-2"
-              >
-                <span className="text-[10px] font-semibold tracking-[0.2em] text-accent-bright/70">
-                  {step.step}
-                </span>
-                <h3 className="mt-5 font-display text-xl font-semibold text-white">{step.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/50">{step.description}</p>
-              </article>
-            ))}
-          </StaggerChildren>
+          <ProcessStepper steps={service.process} />
         </div>
       </section>
 
       {/* BENEFITS */}
-      <section className="section-pad py-16 md:py-20">
-        <div className="container-wide">
+      <section className="section-pad relative overflow-hidden border-t border-border bg-surface-soft py-20 md:py-20">
+        <div className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-accent/6 blur-[120px]" />
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-accent/4 blur-[120px]" />
+
+        <div className="container-wide relative z-10">
           <Reveal>
             <SectionHeading
               eyebrow="Benefits"
@@ -413,54 +356,7 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
             />
           </Reveal>
 
-          <StaggerChildren className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {service.benefits.map((item) => (
-              <div
-                key={item.title}
-                data-stagger-item
-                className="rounded-2xl border border-border bg-surface p-6"
-              >
-                <h3 className="font-display text-base font-semibold text-ink">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
-              </div>
-            ))}
-          </StaggerChildren>
-        </div>
-      </section>
-
-      {/* USE CASES */}
-      <section className="section-pad border-t border-border bg-surface-soft py-16 md:py-20">
-        <div className="container-wide">
-          <Reveal>
-            <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-              <div className="lg:sticky lg:top-24 lg:self-start">
-                <SectionHeading
-                  eyebrow="Use cases"
-                  title="Where this service fits"
-                  description="Real scenarios where this engagement delivers the most value."
-                />
-              </div>
-              <StaggerChildren className="divide-y divide-border border-y border-border">
-                {service.useCases.map((item) => (
-                  <div
-                    key={item.title}
-                    data-stagger-item
-                    className="group relative py-4 pl-6 transition-all duration-300 hover:pl-8 md:py-5"
-                  >
-                    <span className="absolute bottom-0 left-0 top-0 w-0.5 origin-top scale-y-0 bg-accent transition-transform duration-300 group-hover:scale-y-100" />
-                    <div className="max-w-2xl">
-                      <h3 className="font-display text-lg font-semibold text-ink transition-colors duration-300 group-hover:text-accent-deep md:text-xl">
-                        {item.title}
-                      </h3>
-                      <p className="mt-0 text-sm leading-6 text-muted md:text-[15px]">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </StaggerChildren>
-            </div>
-          </Reveal>
+          <BenefitsGrid benefits={service.benefits} />
         </div>
       </section>
 
@@ -504,7 +400,7 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
       )}
 
       {/* FAQ */}
-      <section className="section-pad border-t border-border py-16 md:py-20">
+      <section className="section-pad border-t border-border pt-16 md:pt-20 pb-10 md:pb-10">
         <div className="container-wide">
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             <Reveal>

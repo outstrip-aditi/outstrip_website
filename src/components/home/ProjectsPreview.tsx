@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiArrowUpRight, FiExternalLink } from "react-icons/fi";
 import { projects } from "@/lib/data";
-import { projectImages } from "@/lib/images";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StaggerChildren } from "@/components/ui/StaggerChildren";
@@ -41,8 +40,6 @@ export function ProjectsPreview() {
         <div className="max-w-7xl mx-auto">
           <StaggerChildren className="mt-14 grid gap-4 md:grid-cols-12">
             {featured.map((project, i) => {
-              const image = projectImages[project.slug];
-
               let layout = "md:col-span-4";
               let height = "min-h-[320px] md:min-h-[280px]";
 
@@ -59,28 +56,26 @@ export function ProjectsPreview() {
 
               return (
                 <Link
-                  key={project.slug}
-                  href={`/projects#${project.slug}`}
+                  key={`${project.slug}-${project.category}`}
+                  href={`/projects`}
                   data-stagger-item
                   className={`group relative overflow-hidden ${layout} ${height} transition-all duration-700 ease-out hover:scale-[1.02]`}
                 >
                   {/* Image */}
-                  {image && (
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      sizes={
-                        i === 0
-                          ? "(min-width: 768px) 66vw, 100vw"
-                          : i === 1
-                            ? "(min-width: 768px) 33vw, 100vw"
-                            : "(min-width: 768px) 50vw, 100vw"
-                      }
-                      className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
-                      priority={i === 0}
-                    />
-                  )}
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes={
+                      i === 0
+                        ? "(min-width: 768px) 66vw, 100vw"
+                        : i === 1
+                          ? "(min-width: 768px) 33vw, 100vw"
+                          : "(min-width: 768px) 50vw, 100vw"
+                    }
+                    className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+                    priority={i === 0}
+                  />
 
                   {/* Gradient Overlay */}
                   <div

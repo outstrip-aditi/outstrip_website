@@ -124,10 +124,6 @@ export const projectImages: Record<string, ImageAsset> = {
     src: unsplash("photo-1576091160399-112ba8d25d1d", 1400, 1000),
     alt: "Telehealth scheduling app on a tablet",
   },
-  fleetline: {
-    src: unsplash("photo-1601584115197-04ecc0da31d7", 1400, 1000),
-    alt: "Logistics fleet on the road, tracked in real time",
-  },
   "campus-os": {
     src: unsplash("photo-1523240795612-9a054b0db644", 1400, 1000),
     alt: "Students using a learning platform in a classroom",
@@ -136,9 +132,13 @@ export const projectImages: Record<string, ImageAsset> = {
     src: unsplash("photo-1500835556837-99ac94a94552", 1400, 1000),
     alt: "Travel destination featured in a booking experience",
   },
-  "atelier-pos": {
-    src: unsplash("photo-1441986300917-64674bd600d8", 1400, 1000),
-    alt: "Boutique retail store using a point-of-sale system",
+  "food-hub": {
+    src: unsplash("photo-1517248135467-4c7edcad34c4", 1400, 1000),
+    alt: "Restaurant ordering and reservation platform on a tablet",
+  },
+  "estate-pro": {
+    src: unsplash("photo-1560518883-ce09059eeffa", 1400, 1000),
+    alt: "Modern property listing shown in a real estate platform",
   },
 };
 

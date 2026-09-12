@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { blogPosts, caseStudies, siteConfig } from "@/lib/data";
+import { blogPosts, siteConfig } from "@/lib/data";
 import { industries } from "@/lib/industries";
 import { services } from "@/lib/services";
 
@@ -20,7 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about/talks-to-founders",
     "/services",
     "/projects",
-    "/case-studies",
     "/careers",
     "/blog",
     "/contact",
@@ -39,13 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  const studies = caseStudies.map((c) => ({
-    url: `${base}/case-studies/${c.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-
   const industryPages = industries.map((i) => ({
     url: `${base}/industries/${i.slug}`,
     lastModified: new Date(),
@@ -60,5 +52,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...posts, ...studies, ...industryPages, ...servicePages];
+  return [...staticRoutes, ...posts, ...industryPages, ...servicePages];
 }
