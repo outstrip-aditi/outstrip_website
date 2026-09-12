@@ -26,7 +26,7 @@ export default function TestimonialsPage() {
         </div>
       </PageHero>
 
-      <section className="section-pad pb-24 md:pb-32">
+      <section className="section-pad py-18 md:py-20">
         <div className="container-wide">
           <Reveal>
             <SectionHeading

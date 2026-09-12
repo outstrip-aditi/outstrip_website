@@ -33,10 +33,12 @@ export function Footer() {
       <div className="container-wide relative px-4 py-16 md:py-20 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16 xl:gap-20">
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block">
-              <span className="bg-gradient-to-r from-accent to-blue-400 bg-clip-text font-display text-3xl font-bold tracking-tight text-transparent">
-                OUTSTRIP
-              </span>
+            <Link href="/" className="group relative z-50 flex items-center">
+              <img
+                src="/images/footer-logo.png"
+                alt="Outstrip"
+                className="h-9 w-52 object-contain md:h-12 transition-transform duration-300 group-hover:scale-[1.03]"
+              />
             </Link>
 
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
