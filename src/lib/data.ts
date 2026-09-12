@@ -31,6 +31,7 @@ export const headerNavLinks = [
   { href: "/hire-developers", label: "Hire Developers" },
   { href: "/about", label: "About" },
   { href: "/projects", label: "Portfolio" },
+  { href: "/our-products", label: "Our Products" },
 ];
 
 export const engagementModels = [

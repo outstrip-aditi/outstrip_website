@@ -181,7 +181,6 @@ export type DeveloperProfile = {
   stack: string[];
   highlight: string;
   availability: string;
-  color: string;
 };
 
 export const developerShowcase: DeveloperProfile[] = [
@@ -192,7 +191,6 @@ export const developerShowcase: DeveloperProfile[] = [
     stack: ["React", "Next.js", "TypeScript"],
     highlight: "Led the rebuild of a multi-currency storefront checkout flow.",
     availability: "Available in 1 week",
-    color: "#0D9F8A",
   },
   {
     initials: "AS",
@@ -201,7 +199,6 @@ export const developerShowcase: DeveloperProfile[] = [
     stack: ["Node.js", "PostgreSQL", "AWS"],
     highlight: "Designed the API layer behind a healthcare scheduling platform.",
     availability: "Available in 2 weeks",
-    color: "#1B6BFF",
   },
   {
     initials: "MP",
@@ -210,7 +207,6 @@ export const developerShowcase: DeveloperProfile[] = [
     stack: ["Next.js", "GraphQL", "Docker"],
     highlight: "Owns delivery end-to-end for two long-running client roadmaps.",
     availability: "Available in 1 week",
-    color: "#6B5B95",
   },
   {
     initials: "TJ",
@@ -219,7 +215,6 @@ export const developerShowcase: DeveloperProfile[] = [
     stack: ["React Native", "Kotlin", "Swift"],
     highlight: "Shipped a live-tracking logistics app used by 3 fleet operators.",
     availability: "Available in 2 weeks",
-    color: "#E85D04",
   },
   {
     initials: "NV",
@@ -228,7 +223,6 @@ export const developerShowcase: DeveloperProfile[] = [
     stack: ["Figma", "Design Systems", "Prototyping"],
     highlight: "Built the design system now used across every OUTSTRIP client build.",
     availability: "Available in 1 week",
-    color: "#087A6A",
   },
   {
     initials: "SD",
@@ -237,7 +231,6 @@ export const developerShowcase: DeveloperProfile[] = [
     stack: ["Docker", "Kubernetes", "GitHub Actions"],
     highlight: "Cut deployment time from 40 minutes to under 5 across three products.",
     availability: "Available in 3 weeks",
-    color: "#2A9D8F",
   },
 ];
 

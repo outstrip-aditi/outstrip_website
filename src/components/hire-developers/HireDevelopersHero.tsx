@@ -11,11 +11,18 @@ import { TechIcon } from "@/components/industries/TechIcon";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const FLOATING_BADGES = [
-  { name: "react", top: "6%", left: "4%", duration: 5.5 },
-  { name: "next.js", top: "14%", right: "2%", duration: 6.2 },
-  { name: "node.js", top: "62%", left: "-4%", duration: 5 },
-  { name: "typescript", top: "78%", right: "6%", duration: 6.8 },
-  { name: "docker", top: "40%", right: "-6%", duration: 5.8 },
+  { name: "react", top: "4%", left: "2%", duration: 5.5 },
+  { name: "next.js", top: "10%", right: "0%", duration: 6.2 },
+  { name: "node.js", top: "48%", left: "-6%", duration: 5 },
+  { name: "typescript", top: "78%", right: "4%", duration: 6.8 },
+  { name: "docker", top: "38%", right: "-7%", duration: 5.8 },
+
+  { name: "prisma", top: "25%", left: "-8%", duration: 6.4 },
+  { name: "tailwindcss", top: "88%", left: "18%", duration: 5.7 },
+  { name: "mongodb", top: "3%", left: "34%", duration: 6.1 },
+  { name: "salesforce", top: "68%", right: "-7%", duration: 5.4 },
+  { name: "angular", top: "58%", left: "8%", duration: 6.6 },
+  { name: "ios", top: "22%", right: "12%", duration: 5.9 },
 ];
 
 export function HireDevelopersHero() {
@@ -75,7 +82,6 @@ export function HireDevelopersHero() {
             </div>
           </Reveal>
 
-          {/* Interactive developer/tech visual */}
           <Reveal delay={0.12} className="relative hidden lg:block">
             <div className="relative mx-auto aspect-square max-w-md">
               {!reduced &&
@@ -83,7 +89,11 @@ export function HireDevelopersHero() {
                   <motion.div
                     key={badge.name}
                     className="absolute z-20 flex h-14 w-14 items-center justify-center rounded-2xl border border-border bg-surface/90 shadow-[0_20px_50px_-25px_rgba(7,17,31,0.35)] backdrop-blur-md"
-                    style={{ top: badge.top, left: badge.left, right: badge.right }}
+                    style={{
+                      top: badge.top,
+                      left: badge.left,
+                      right: badge.right,
+                    }}
                     animate={{ y: [0, -14, 0] }}
                     transition={{
                       duration: badge.duration,
@@ -91,24 +101,44 @@ export function HireDevelopersHero() {
                       ease: "easeInOut",
                     }}
                   >
-                    <TechIcon name={badge.name} className="[&>svg]:h-7 [&>svg]:w-7" />
+                    <TechIcon
+                      name={badge.name}
+                      className="[&>svg]:h-7 [&>svg]:w-7"
+                    />
                   </motion.div>
                 ))}
 
-              <TiltCard className="relative z-10 mx-auto flex h-full w-full items-center justify-center">
+              <div className="relative z-10 mx-auto flex h-full w-full items-center justify-center">
                 <div className="relative w-full max-w-xs overflow-hidden rounded-2xl border border-white/15 bg-ink/95 p-6 text-white shadow-[0_40px_100px_-30px_rgba(7,17,31,0.6)] backdrop-blur-xl">
                   <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent/25 blur-[80px]" />
+
                   <div className="relative z-10">
                     <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent-bright">
                       <span className="h-1.5 w-1.5 rounded-full bg-accent-bright animate-pulse" />
                       Available for hire
                     </span>
 
-                    <h3 className="font-display mt-4 text-xl">Senior Full-Stack Engineer</h3>
-                    <p className="mt-1 text-sm text-white/50">8 yrs experience · Remote-ready</p>
+                    <h3 className="font-display mt-4 text-xl">
+                      Senior Full-Stack Engineer
+                    </h3>
+
+                    <p className="mt-1 text-sm text-white/50">
+                      8 yrs experience · Remote-ready
+                    </p>
 
                     <div className="mt-5 flex flex-wrap gap-2">
-                      {["Next.js", "Node.js", "TypeScript", "AWS"].map((tech) => (
+                      {[
+                        "Next.js",
+                        "Node.js",
+                        "TypeScript",
+                        "Prisma",
+                        "Tailwind CSS",
+                        "mongodb",
+                        "salesforce",
+                        "Angular",
+                        "iOS",
+                        "AWS",
+                      ].map((tech) => (
                         <span
                           key={tech}
                           className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/80"
@@ -120,17 +150,26 @@ export function HireDevelopersHero() {
 
                     <div className="mt-6 grid grid-cols-2 gap-4 border-t border-white/10 pt-5">
                       <div>
-                        <p className="font-display text-lg font-semibold text-white">2 weeks</p>
-                        <p className="mt-0.5 text-[11px] text-white/45">Time to start</p>
+                        <p className="font-display text-lg font-semibold text-white">
+                          2 weeks
+                        </p>
+                        <p className="mt-0.5 text-[11px] text-white/45">
+                          Time to start
+                        </p>
                       </div>
+
                       <div>
-                        <p className="font-display text-lg font-semibold text-white">100%</p>
-                        <p className="mt-0.5 text-[11px] text-white/45">Dedicated hours</p>
+                        <p className="font-display text-lg font-semibold text-white">
+                          100%
+                        </p>
+                        <p className="mt-0.5 text-[11px] text-white/45">
+                          Dedicated hours
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
-              </TiltCard>
+              </div>
             </div>
           </Reveal>
         </div>
