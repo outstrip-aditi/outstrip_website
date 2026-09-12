@@ -18,6 +18,7 @@ import { ProcessSection } from "../home/ProcessSection";
 export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
   const industrySlugs = new Set(industries.map((industry) => industry.slug));
   const overviewImage = service.overview.heroImage;
+  const overview = service.overview;
 
   return (
     <PageShell>
@@ -68,28 +69,58 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
       <section className="section-pad overflow-hidden py-16 md:py-20">
         <div className="container-wide">
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-20">
+            <div className="flex flex-col">
+              <Reveal>
+                <div className="flex items-center gap-3">
+                  <span className="h-px w-8 bg-accent" />
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-deep">
+                    Overview
+                  </p>
+                </div>
 
-            <Reveal>
-              <div className="flex items-center gap-3">
-                <span className="h-[1px] w-8 bg-accent" />
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-deep">
-                  Overview
-                </p>
+                <h2 className="font-display mt-5 text-2xl font-semibold leading-[1.08] tracking-[-0.035em] text-ink sm:text-3xl md:text-4xl">
+                  {service.overview.title}
+                </h2>
+
+                {service.overview.paragraphs.map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 24)}
+                    className="mt-4 text-sm leading-6 text-muted md:text-base md:leading-7"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </Reveal>
+
+              <div className="mt-6">
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="h-px w-8 bg-accent" />
+                  <h3 className="font-display text-lg font-semibold text-ink sm:text-xl">
+                    Types of SMO
+                  </h3>
+                </div>
+
+                <div className="grid gap-6 sm:grid-cols-2">
+                  {overview?.types?.map((type) => (
+                    <div key={type.number} className="relative border-l-2 border-accent/30 pl-5">
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs font-bold tracking-[0.15em] text-accent">
+                          {type.number}
+                        </span>
+                        <h4 className="font-display text-base font-semibold text-ink">
+                          {type.title}
+                        </h4>
+                      </div>
+
+                      <div className="mt-3 flex gap-3">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                        <p className="text-sm leading-6 text-muted">{type.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-
-              <h2 className="font-display mt-5 text-2xl font-semibold leading-[1.08] tracking-[-0.035em] text-ink sm:text-3xl md:text-4xl">
-                {service.overview.title}
-              </h2>
-
-              {service.overview.paragraphs.map((paragraph) => (
-                <p
-                  key={paragraph.slice(0, 24)}
-                  className="mt-4 text-sm leading-6 text-muted md:text-base md:leading-7"
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </Reveal>
+            </div>
 
             {/* OVERVIEW IMAGE */}
             {overviewImage && (
@@ -103,18 +134,18 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
                       alt={`${service.overview.title} - OUTSTRIP`}
                       width={500}
                       height={340}
-                      className="h-auto w-[600px] max-w-full object-contain sm:w-[530px] md:w-[550px] transition-transform duration-700 hover:scale-105"
+                      className="h-auto w-[600px] max-w-full object-contain transition-transform duration-700 hover:scale-105 sm:w-[530px] md:w-[550px]"
                     />
                   </div>
                   {/* Floating label */}
-                  <div className="absolute -bottom-7 left-2 z-20 rounded-lg border border-border bg-white/90 px-5 py-4 shadow-xl backdrop-blur-md sm:-bottom-7 sm:left-2">
+                  <div className="absolute -bottom-7 left-2 z-20 rounded-lg border border-border bg-white/90 px-5 py-4 shadow-xl backdrop-blur-md">
                     <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-accent-deep">
                       {service.category}
                     </p>
                     <p className="mt-1.5 font-display text-sm font-semibold text-ink">
                       {service.shortTitle}
                     </p>
-                    <div className="mt-1 h-[2px] w-9 rounded-full bg-accent" />
+                    <div className="mt-1 h-0.5 w-9 rounded-full bg-accent" />
                   </div>
                 </div>
               </Reveal>
@@ -124,32 +155,76 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
       </section>
 
       {/* WHY CHOOSE THIS SERVICE */}
-      <section className="section-pad border-t border-border py-16 md:py-20">
-        <div className="container-wide">
+      <section className="section-pad relative overflow-hidden border-t border-border bg-surface-soft py-20 md:py-28">
+        <div className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-accent/[0.06] blur-[120px]" />
+        <div className="pointer-events-none absolute -left-40 bottom-10 h-80 w-80 rounded-full bg-accent/[0.04] blur-[100px]" />
+
+        <div className="container-wide relative z-10">
           <Reveal>
             <SectionHeading
               eyebrow="Why choose us"
               title={`Why teams choose OUTSTRIP for ${service.shortTitle}`}
-              description="The specific strengths that shape how we approach this service."
+              description="We combine strategy, execution, and continuous optimization to create work that supports your business goals — not just deliver another service."
             />
           </Reveal>
 
-          <StaggerChildren className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {service.whyChooseUs.map((item, index) => (
-              <article
-                key={item.title}
-                data-stagger-item
-                className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-[0_24px_60px_-30px_rgba(7,17,31,0.3)]"
-              >
-                <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-accent/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-                <FeatureIcon icon={item.icon ?? "check"} className="h-11 w-11" />
-                <h3 className="mt-4 font-display text-base font-semibold text-ink">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
-                <span className="mt-4 block font-display text-2xl font-semibold text-accent/20 transition-colors duration-500 group-hover:text-accent/35">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-              </article>
-            ))}
+          {/* Bento Grid */}
+          <StaggerChildren className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {service.whyChooseUs.map((item, index) => {
+              const isFeature = index === 0;
+              const isWide = index === 1 || index === 4 || index === 5;
+
+              return (
+                <article
+                  key={item.title}
+                  data-stagger-item
+                  className={[
+                    "group relative overflow-hidden rounded-xl border border-border bg-white p-5",
+                    "transition-all duration-500 hover:-translate-y-1 hover:border-accent/40",
+                    "hover:shadow-[0_20px_50px_-30px_rgba(7,17,31,0.3)]",
+                    (isFeature || isWide) && "lg:col-span-2",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  {/* Background number */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -left-5 -top-3 z-0 select-none font-display text-[9rem] font-bold leading-none tracking-[-0.12em] text-accent/4.5 transition-all duration-500 group-hover:text-accent/8"
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Top */}
+                  <div className="relative z-10 flex items-start justify-between gap-4">
+                    <div className="flex-1">
+                      <h3 className="font-display text-base font-semibold leading-snug text-ink lg:text-lg">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* Icon */}
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-surface-soft transition-all duration-300 group-hover:border-accent/30 group-hover:bg-accent">
+                      <FeatureIcon icon={item.icon ?? "check"} className="h-4 w-4" />
+                    </span>
+                  </div>
+
+                  {/* Bottom */}
+                  <div className="relative z-10 mt-5 flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-muted">
+                    <span>Our advantage</span>
+                    <FiArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </div>
+
+                  {/* Bottom border */}
+                  <div className="absolute bottom-0 left-5 right-5 h-px bg-border">
+                    <div className="h-full w-0 bg-accent transition-all duration-500 group-hover:w-1/2" />
+                  </div>
+                </article>
+              );
+            })}
           </StaggerChildren>
         </div>
       </section>
@@ -189,28 +264,108 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
       </section>
 
       {/* TECHNOLOGIES */}
-      <section className="section-pad py-16 md:py-20">
-        <div className="container-wide">
+      {/* TECHNOLOGIES */}
+      <section className="section-pad relative overflow-hidden border-t border-border bg-surface-soft py-20 md:py-28">
+        {/* Background decoration */}
+        <div className="pointer-events-none absolute -right-40 top-10 h-96 w-96 rounded-full bg-accent/[0.05] blur-[120px]" />
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-accent/[0.04] blur-[120px]" />
+
+        <div className="container-wide relative z-10">
           <Reveal>
             <SectionHeading
               eyebrow="Technologies & tools"
-              title="Built with a stack matched to the job"
-              description="The technologies our team reaches for, and why each one earns its place."
+              title="Built with the right technology for the job"
+              description="A carefully selected stack that gives every project the right balance of performance, scalability, and maintainability."
             />
           </Reveal>
 
-          <StaggerChildren className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <StaggerChildren className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {service.technologies.map((tech) => (
               <div
                 key={tech.name}
                 data-stagger-item
-                className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40"
+                className="
+            group relative overflow-hidden rounded-2xl
+            border border-border bg-surface
+            p-5
+            transition-all duration-500
+            hover:-translate-y-1
+            hover:border-accent/40
+            hover:shadow-[0_24px_60px_-30px_rgba(13,159,138,0.35)]
+          "
               >
-                <ServiceTechIcon icon={tech.icon} className="h-11 w-11 shrink-0" />
-                <div>
-                  <p className="font-display text-sm font-semibold text-ink">{tech.name}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-muted">{tech.description}</p>
+                {/* Hover glow */}
+                <div
+                  className="
+              pointer-events-none absolute -right-16 -top-16
+              h-32 w-32 rounded-full
+              bg-accent/[0.08] blur-3xl
+              opacity-0 transition-opacity duration-500
+              group-hover:opacity-100
+            "
+                />
+
+                <div className="relative z-10 flex items-start gap-5">
+                  {/* Technology Logo */}
+                  <div
+                    className="
+                flex h-16 w-16 shrink-0 items-center justify-center
+                rounded-2xl border border-border
+                bg-white
+                p-3
+                shadow-sm
+                transition-all duration-500
+                group-hover:scale-105
+                group-hover:border-accent/30
+                group-hover:shadow-md
+              "
+                  >
+                    <img
+                      src={`/images/technologies/${tech.icon}.png`}
+                      alt={`${tech.name} logo`}
+                      className="
+                  h-full w-full
+                  object-contain
+                  transition-transform duration-500
+                  group-hover:scale-110
+                "
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="min-w-0 pt-1">
+                    <div className="flex items-center gap-2">
+                      <p className="font-display text-base font-semibold text-ink">
+                        {tech.name}
+                      </p>
+
+                      <span
+                        className="
+                    h-1.5 w-1.5 rounded-full
+                    bg-accent
+                    opacity-0
+                    transition-opacity duration-300
+                    group-hover:opacity-100
+                  "
+                      />
+                    </div>
+
+                    <p className="mt-1.5 text-sm leading-6 text-muted">
+                      {tech.description}
+                    </p>
+                  </div>
                 </div>
+
+                {/* Bottom accent line */}
+                <div
+                  className="
+              absolute bottom-0 left-5 right-5
+              h-px origin-left scale-x-0
+              bg-gradient-to-r from-accent/70 via-accent/30 to-transparent
+              transition-transform duration-500
+              group-hover:scale-x-100
+            "
+                />
               </div>
             ))}
           </StaggerChildren>
@@ -292,7 +447,7 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
                     data-stagger-item
                     className="group relative py-4 pl-6 transition-all duration-300 hover:pl-8 md:py-5"
                   >
-                    <span className="absolute bottom-0 left-0 top-0 w-[2px] origin-top scale-y-0 bg-accent transition-transform duration-300 group-hover:scale-y-100" />
+                    <span className="absolute bottom-0 left-0 top-0 w-0.5 origin-top scale-y-0 bg-accent transition-transform duration-300 group-hover:scale-y-100" />
                     <div className="max-w-2xl">
                       <h3 className="font-display text-lg font-semibold text-ink transition-colors duration-300 group-hover:text-accent-deep md:text-xl">
                         {item.title}
@@ -360,7 +515,7 @@ export function ServicePageTemplate({ service }: { service: ServiceDetail }) {
                   description={`Answers to what clients usually ask before starting a ${service.shortTitle} project.`}
                 />
                 <div className="mt-3 hidden items-center gap-3 lg:flex">
-                  <span className="h-[2px] w-10 bg-accent" />
+                  <span className="h-0.5 w-10 bg-accent" />
                   <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">
                     We are here to help
                   </span>

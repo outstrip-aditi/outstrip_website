@@ -12,6 +12,12 @@ export type ServiceProcessStep = { step: string; title: string; description: str
 export type ServiceTech = { name: string; icon: string; description: string };
 export type ServiceFaq = { question: string; answer: string };
 export type ServiceIndustryLink = { label: string; slug?: string };
+export type ServiceOverviewType = {
+  number?: string;
+  title: string;
+  description: string;
+  points?: string[];
+};
 
 export type ServiceDetail = {
   slug: string;
@@ -27,6 +33,7 @@ export type ServiceDetail = {
   stats: ServiceStat[];
   overview: {
     title: string;
+    types?: ServiceOverviewType[];
     paragraphs: string[];
     heroImage?: string;
   };
@@ -118,6 +125,7 @@ export const services: ServiceDetail[] = [
       { title: "Editor-friendly by design", description: "Clean, guided editing experiences so your content team ships updates independently.", icon: "grid" },
       { title: "Security hardened", description: "Hardened configs, managed updates, and malware monitoring baked into every build.", icon: "shield" },
       { title: "Performance tuned", description: "Caching, image optimization, and query tuning aimed at Core Web Vitals, not just Lighthouse screenshots.", icon: "trending" },
+      { title: "Seamless legacy migration", description: "Clean migration from static sites or legacy CMS platforms with redirects and SEO equity preserved.", icon: "map" },
     ],
     features: [
       "Custom theme & block development",
@@ -206,6 +214,7 @@ export const services: ServiceDetail[] = [
       { title: "Deep Microsoft ecosystem fit", description: "Clean integration with Azure, Active Directory, SQL Server, and Office 365.", icon: "wifi" },
       { title: "Strong security posture", description: "Built-in authentication, authorization, and input validation from the start.", icon: "shield" },
       { title: "Performance at scale", description: "Async pipelines and caching strategies tuned for high-concurrency workloads.", icon: "trending" },
+      { title: "CI/CD-driven delivery", description: "Automated testing and deployment pipelines that catch regressions before they reach production.", icon: "check" },
     ],
     features: [
       "ASP.NET Core MVC & Web API development",
@@ -293,6 +302,7 @@ export const services: ServiceDetail[] = [
       { title: "Native performance", description: "Direct access to local hardware, files, and system resources.", icon: "monitor" },
       { title: "Fleet-friendly deployment", description: "Installers and auto-update pipelines built for managing many machines.", icon: "layers" },
       { title: "Legacy modernization", description: "Rebuilding aging desktop tools without disrupting daily operations.", icon: "shield" },
+      { title: "Deep hardware integration", description: "Direct integration with scanners, printers, and other peripherals your workflow depends on.", icon: "camera" },
     ],
     features: [
       "Windows desktop application development",
@@ -379,6 +389,7 @@ export const services: ServiceDetail[] = [
       { title: "Framework-flexible", description: "Laravel, CodeIgniter, or lightweight custom PHP, matched to project needs.", icon: "grid" },
       { title: "Performance focused", description: "Query optimization, caching, and profiling built into the process.", icon: "trending" },
       { title: "Secure by default", description: "Input validation, prepared statements, and OWASP-aligned practices throughout.", icon: "shield" },
+      { title: "Legacy code, modernized", description: "Refactoring aging PHP codebases into clean, testable applications without a risky rewrite.", icon: "layers" },
     ],
     features: [
       "Custom PHP web application development",
@@ -466,6 +477,7 @@ export const services: ServiceDetail[] = [
       { title: "TypeScript throughout", description: "Strong typing end-to-end reduces runtime bugs before they ship.", icon: "grid" },
       { title: "Reusable component systems", description: "Shared UI libraries that keep large applications consistent.", icon: "grid" },
       { title: "Built for long-term teams", description: "Conventions and documentation that make onboarding painless.", icon: "users" },
+      { title: "Deliberate state management", description: "RxJS-driven patterns matched to complexity, avoiding unnecessary state libraries.", icon: "layers" },
     ],
     features: [
       "Angular application architecture & setup",
@@ -553,6 +565,7 @@ export const services: ServiceDetail[] = [
       { title: "Custom Apex & Lightning development", description: "Built for the cases standard configuration can't cover.", icon: "layers" },
       { title: "Integration expertise", description: "Connects cleanly to your website, marketing, and finance stack.", icon: "wifi" },
       { title: "Adoption-focused rollout", description: "Training and change management so the team actually uses it.", icon: "users" },
+      { title: "Clean data migration", description: "Careful data cleansing and mapping so legacy CRM data doesn't carry old problems into Salesforce.", icon: "check" },
     ],
     features: [
       "Salesforce implementation & configuration",
@@ -639,6 +652,7 @@ export const services: ServiceDetail[] = [
       { title: "Right rendering strategy", description: "Next.js SSR/SSG or a client SPA, chosen for the product's actual needs.", icon: "layers" },
       { title: "Performance discipline", description: "Code-splitting, memoization, and bundle audits built into delivery.", icon: "trending" },
       { title: "State management done right", description: "Matched to complexity — Context, Zustand, or Redux, not over-engineered by default.", icon: "check" },
+      { title: "Test-covered from day one", description: "Jest and React Testing Library coverage built alongside features, not added as an afterthought.", icon: "check" },
     ],
     features: [
       "React & Next.js application development",
@@ -727,6 +741,7 @@ export const services: ServiceDetail[] = [
       { title: "Lightweight footprint", description: "Runs efficiently on modest hosting without heavy resource demands.", icon: "cloud" },
       { title: "Clean MVC structure", description: "Organized, testable code even within a minimal framework.", icon: "layers" },
       { title: "Cost-efficient to maintain", description: "Simple conventions keep long-term maintenance costs lower.", icon: "check" },
+      { title: "Legacy upgrade expertise", description: "Modernizing older CodeIgniter 2/3 applications to current, supported versions.", icon: "layers" },
     ],
     features: [
       "Custom CodeIgniter application development",
@@ -806,13 +821,14 @@ export const services: ServiceDetail[] = [
         "Laravel's combination of expressive syntax, built-in tooling (queues, events, Eloquent ORM, testing), and a large, well-documented ecosystem makes it our default choice for structured PHP applications of real complexity.",
         "We build with service-layer architecture, queued jobs for anything slow or asynchronous, and automated tests, so the application stays fast and reliable as usage grows.",
       ],
-      heroImage: "/images/services/salesforce.png",
+      heroImage: "/images/services/laravel.png",
     },
     whyChooseUs: [
       { title: "Expressive, maintainable code", description: "Eloquent ORM and clean conventions reduce boilerplate and bugs.", icon: "layers" },
       { title: "Built-in scale tooling", description: "Queues, events, and caching designed into the framework itself.", icon: "trending" },
       { title: "Rich ecosystem", description: "Mature packages for auth, payments, search, and more.", icon: "grid" },
       { title: "Test-driven delivery", description: "Automated test coverage baked into how we build, not bolted on after.", icon: "check" },
+      { title: "Multi-tenant SaaS ready", description: "Architecture built for subscription billing, role-based access, and multi-tenant applications.", icon: "layers" },
     ],
     features: [
       "Custom Laravel application development",
@@ -898,12 +914,14 @@ export const services: ServiceDetail[] = [
         "Magento earns its complexity when a catalog gets large, multiple storefronts need to share inventory, or traffic spikes hard around sales events. We build on that strength — clean custom modules, tuned indexing, and caching that keeps a heavy catalog fast.",
         "We also fix the common Magento pain points: slow admin performance, bloated third-party extensions, and checkout flows that lose customers before they finish paying.",
       ],
+      heroImage: "/images/services/e-commerce/magento.png",
     },
     whyChooseUs: [
       { title: "Built for catalog complexity", description: "Multi-store, multi-currency, and large product catalogs handled cleanly.", icon: "layers" },
       { title: "Performance under load", description: "Indexing, caching, and CDN strategy tuned for peak-traffic events.", icon: "trending" },
       { title: "Conversion-focused checkout", description: "Streamlined flows that reduce abandonment at the final step.", icon: "card" },
       { title: "Clean custom modules", description: "Extensions built to Magento standards, not quick hacks that break on upgrade.", icon: "check" },
+      { title: "ERP & inventory integration", description: "Clean connections to ERP, warehouse, and accounting systems so data stays in sync.", icon: "layers" },
     ],
     features: [
       "Custom Magento theme development",
@@ -983,12 +1001,14 @@ export const services: ServiceDetail[] = [
         "WooCommerce is the right call when a merchant wants full content control from WordPress alongside a commerce layer — without the overhead of a dedicated commerce platform. The tradeoff is that a default WooCommerce install can get slow and plugin-heavy fast.",
         "We build lean, custom-themed stores with only the extensions the business actually needs, tuned for speed and a checkout flow designed to convert — not the default WooCommerce experience out of the box.",
       ],
+      heroImage: "/images/services/e-commerce/woocommerce.png",
     },
     whyChooseUs: [
       { title: "Lean, purpose-built stores", description: "Custom theming and only the plugins that earn their place.", icon: "layers" },
       { title: "Content + commerce in one place", description: "Full WordPress content control alongside the storefront.", icon: "book" },
       { title: "Conversion-focused checkout", description: "Streamlined flows tuned to reduce cart abandonment.", icon: "card" },
       { title: "Performance tuned", description: "Caching and image optimization aimed at real-world load times.", icon: "trending" },
+      { title: "Subscription & recurring billing", description: "Membership and subscription commerce built directly into your WordPress store.", icon: "card" },
     ],
     features: [
       "Custom WooCommerce theme development",
@@ -1068,12 +1088,14 @@ export const services: ServiceDetail[] = [
         "OpenCart is a solid choice for merchants who want full ownership of their store without the licensing costs or complexity of larger platforms. We build custom themes and extensions on top of it, avoiding the marketplace-extension sprawl that slows many OpenCart stores down.",
         "The result is a store that's fast, simple for a small team to manage, and inexpensive to host and maintain.",
       ],
+      heroImage: "/images/services/e-commerce/opencart.png",
     },
     whyChooseUs: [
       { title: "Cost-efficient ownership", description: "No recurring platform fees — you own the store outright.", icon: "check" },
       { title: "Fast, lightweight builds", description: "Minimal overhead keeps pages fast on modest hosting.", icon: "trending" },
       { title: "Custom, not marketplace-stacked", description: "Purpose-built extensions instead of a pile of loosely fitted add-ons.", icon: "layers" },
       { title: "Simple to manage", description: "A store your team can run without ongoing developer support.", icon: "grid" },
+      { title: "Multi-store flexibility", description: "Run multiple storefronts from a single, self-owned OpenCart installation.", icon: "layers" },
     ],
     features: [
       "Custom OpenCart theme development",
@@ -1156,12 +1178,14 @@ export const services: ServiceDetail[] = [
         "The right hosting setup depends on traffic patterns, application architecture, and how much control your team needs — not a one-size-fits-all shared plan. We assess your application and recommend infrastructure that fits, then configure and monitor it on an ongoing basis.",
         "That includes server hardening, backup strategy, and monitoring so issues get caught before they become downtime.",
       ],
+      heroImage: "/images/services/hosting/hosting.png",
     },
     whyChooseUs: [
       { title: "Matched to your application", description: "Infrastructure sized to actual traffic and architecture, not guesswork.", icon: "check" },
       { title: "Proactively monitored", description: "Uptime and performance monitoring that catches issues early.", icon: "activity" },
       { title: "Security hardened", description: "Server-level hardening, firewalls, and patching as standard.", icon: "shield" },
       { title: "Backed by real support", description: "A team that responds when something needs attention.", icon: "phone" },
+      { title: "Backups you can rely on", description: "Automated backups and disaster recovery planning in place before you ever need them.", icon: "shield" },
     ],
     features: [
       "Shared, VPS, and dedicated hosting setup",
@@ -1241,12 +1265,14 @@ export const services: ServiceDetail[] = [
         "As traffic and data grow, infrastructure needs to scale predictably — not through late-night firefighting. We design cloud architectures with auto-scaling, load balancing, and infrastructure-as-code so environments are reproducible and changes are reviewable, not manual and risky.",
         "We support the major cloud providers and tailor the architecture to your application's actual scaling pattern, rather than defaulting to over-provisioned infrastructure.",
       ],
+      heroImage: "/images/services/hosting/servers-cloud.png",
     },
     whyChooseUs: [
       { title: "Scales with real demand", description: "Auto-scaling and load balancing designed around your traffic pattern.", icon: "trending" },
       { title: "Infrastructure as code", description: "Reproducible, version-controlled environments instead of manual configuration.", icon: "layers" },
       { title: "Proactive monitoring", description: "Alerting that surfaces problems before users notice them.", icon: "activity" },
       { title: "Cost-aware architecture", description: "Right-sized infrastructure instead of default over-provisioning.", icon: "check" },
+      { title: "Container-native orchestration", description: "Docker and Kubernetes workflows built for distributed, scalable application components.", icon: "layers" },
     ],
     features: [
       "Cloud architecture design (AWS, Azure, GCP)",
@@ -1327,12 +1353,14 @@ export const services: ServiceDetail[] = [
         "An expired SSL certificate or a misconfigured DNS record can take a site offline or trigger browser security warnings — small technical details with an outsized impact on customer trust. We manage domains and certificates so these things never become emergencies.",
         "That includes proactive renewal tracking, correct DNS records for email deliverability, and HTTPS configuration that actually passes modern security checks.",
       ],
+      heroImage: "/images/services/hosting/domains-ssl.png",
     },
     whyChooseUs: [
       { title: "Nothing expires unexpectedly", description: "Proactive renewal tracking for domains and certificates.", icon: "shield" },
       { title: "Correct DNS from the start", description: "Records configured properly for hosting, email, and CDN.", icon: "wifi" },
       { title: "Builds customer trust", description: "Clean HTTPS configuration with no browser security warnings.", icon: "check" },
       { title: "One point of contact", description: "Handled alongside your hosting instead of a separate vendor.", icon: "phone" },
+      { title: "Reliable email deliverability", description: "Correctly configured SPF, DKIM, and DMARC records so your email lands in the inbox.", icon: "message" },
     ],
     features: [
       "Domain registration & transfer",
@@ -1411,12 +1439,14 @@ export const services: ServiceDetail[] = [
         "Sending an email or SMS is easy — getting it delivered reliably is the hard part. We configure transactional messaging infrastructure with the authentication, IP reputation, and provider setup that keeps deliverability high, and integrate it cleanly into your application.",
         "This covers everything from OTP and order confirmations to marketing sends and system alerts, routed through providers matched to your volume and reliability needs.",
       ],
+      heroImage: "/images/services/hosting/email-sms-solutions.png",
     },
     whyChooseUs: [
       { title: "Deliverability-first setup", description: "Authentication and provider configuration built to reach the inbox.", icon: "check" },
       { title: "Right provider for your volume", description: "Matched to actual sending needs, not a default choice.", icon: "grid" },
       { title: "Clean application integration", description: "Wired directly into your app's transactional flows.", icon: "layers" },
       { title: "Monitored delivery", description: "Bounce, spam, and delivery tracking so issues surface early.", icon: "activity" },
+      { title: "On-brand, tested templates", description: "Email and SMS templates designed and managed for consistency across every transactional touchpoint.", icon: "layers" },
     ],
     features: [
       "Transactional email setup (order/OTP/alerts)",
@@ -1500,12 +1530,14 @@ export const services: ServiceDetail[] = [
         "Android's biggest engineering challenge is device fragmentation — different screen sizes, OS versions, and hardware capabilities all need to feel equally polished. We build with that reality in mind: adaptive layouts, careful memory management, and testing across representative device tiers, not just flagship phones.",
         "We handle the full lifecycle — architecture, UI, backend/API integration, push notifications, offline support, and Play Store submission — so the app is genuinely ready for real users on day one.",
       ],
+      heroImage: "/images/services/mobile-application/android-app.png",
     },
     whyChooseUs: [
       { title: "Built for fragmentation", description: "Tested across device tiers, not just the latest flagship.", icon: "monitor" },
       { title: "Performance-first engineering", description: "Careful memory and battery management for smooth everyday use.", icon: "trending" },
       { title: "Retention-focused UX", description: "Onboarding and engagement patterns designed for the second session, not just the first.", icon: "star" },
       { title: "Clean Play Store submission", description: "Policy-compliant builds that pass review without delays.", icon: "check" },
+      { title: "Offline-first architecture", description: "Local data and sync design so the app stays usable through patchy or absent connectivity.", icon: "wifi" },
     ],
     features: [
       "Native Android (Kotlin/Java) development",
@@ -1586,12 +1618,14 @@ export const services: ServiceDetail[] = [
         "iOS users notice polish — animation timing, gesture responsiveness, and adherence to Human Interface Guidelines all affect how trustworthy an app feels. We build with that bar in mind, whether the app is native Swift or a well-tuned cross-platform build.",
         "We also manage the parts of iOS development teams often underestimate: App Store review compliance, privacy manifest requirements, and subscription/in-app purchase configuration — so submission doesn't become a bottleneck.",
       ],
+      heroImage: "/images/services/mobile-application/ios.png",
     },
     whyChooseUs: [
       { title: "Interaction-level polish", description: "Animation and gesture detail matched to iOS user expectations.", icon: "star" },
       { title: "HIG-compliant design", description: "Interfaces that feel native to the platform, not ported from elsewhere.", icon: "grid" },
       { title: "Review-ready submissions", description: "Privacy and policy compliance handled before submission, not after rejection.", icon: "shield" },
       { title: "Performance tuned", description: "Smooth on current and older supported devices alike.", icon: "trending" },
+      { title: "Reliable subscription billing", description: "In-app purchases and subscription billing configured correctly to avoid App Store payment issues.", icon: "card" },
     ],
     features: [
       "Native iOS (Swift/SwiftUI) development",
@@ -1674,14 +1708,18 @@ export const services: ServiceDetail[] = [
       title: "Design decisions grounded in what users actually need",
       paragraphs: [
         "A good-looking site that doesn't communicate clearly still fails. We start with research and information architecture — understanding what visitors are trying to accomplish — before moving into visual design, so every layout decision serves a purpose.",
-        "The result is a site that's both visually polished and structurally clear: an easy first impression that also holds up under real navigation and use.",
+        "We focus on creating a clear visual hierarchy that guides users naturally through the experience. From typography and spacing to color, imagery, and interactive elements, every detail is considered to make important information easy to find and understand.",
+        "Our approach balances brand personality with usability. We design interfaces that feel distinctive and modern without allowing visual effects, animations, or decorative elements to get in the way of the user's primary goals.",
+        "Responsive behavior is considered from the beginning rather than added at the end. Each layout is designed to adapt smoothly across desktops, tablets, and mobile devices while maintaining consistency, readability, and a comfortable interaction experience.",
       ],
+      heroImage: "/images/services/web-design/website-design.png",
     },
     whyChooseUs: [
       { title: "Research before pixels", description: "User and business goals mapped before any visual design begins.", icon: "search" },
       { title: "Clarity-first layouts", description: "Structure that guides visitors instead of just decorating the page.", icon: "grid" },
       { title: "Brand-consistent craft", description: "Typography, color, and imagery aligned to your identity.", icon: "star" },
       { title: "Conversion-aware design", description: "Every key page designed with a clear next action in mind.", icon: "trending" },
+      { title: "Design systems built in", description: "Reusable style guides and component patterns that keep future pages consistent.", icon: "grid" },
     ],
     features: [
       "UX research & information architecture",
@@ -1756,16 +1794,21 @@ export const services: ServiceDetail[] = [
     ],
     overview: {
       title: "When your brand and product don't fit a template",
+
       paragraphs: [
         "Templates are built for the average case. When your product has real complexity, your brand has a distinctive point of view, or your competitors all look the same, a fully custom design becomes the differentiator rather than a nice-to-have.",
         "We build the visual system, interaction patterns, and page architecture from a blank canvas — informed by your brand strategy and user research — so nothing about the site feels borrowed.",
+        "Every part of the experience is designed around your specific goals, audience, and content. From the first interaction to deeper product journeys, we create layouts that make complex information easier to understand while keeping the experience intuitive and engaging.",
+        "The result is a website that feels genuinely yours: differentiated from competitors, aligned with your brand, and built around how your customers actually explore, understand, and interact with your product."
       ],
+      heroImage: "/images/services/web-design/custom-website-design.png",
     },
     whyChooseUs: [
       { title: "Zero template compromise", description: "Every layout and interaction pattern designed specifically for you.", icon: "star" },
       { title: "Distinctive visual identity", description: "Design that makes your brand memorable, not interchangeable.", icon: "grid" },
       { title: "Built for complexity", description: "Handles nuanced products and content templates can't accommodate.", icon: "layers" },
       { title: "Strategic, not decorative", description: "Every custom element serves a communication or conversion purpose.", icon: "trending" },
+      { title: "Bespoke micro-interactions", description: "Custom animation and interaction details designed specifically for your product, not borrowed from a library.", icon: "star" },
     ],
     features: [
       "Custom visual identity & art direction",
@@ -1842,14 +1885,18 @@ export const services: ServiceDetail[] = [
       title: "Designed mobile-first, not squeezed down after",
       paragraphs: [
         "With most traffic arriving on mobile for many businesses, a 'responsive' site that just shrinks a desktop layout isn't good enough. We design mobile-first — establishing content hierarchy, touch targets, and navigation for small screens first, then expanding deliberately for larger viewports.",
-        "That means every breakpoint gets real design attention: layout, image treatment, and interaction patterns tuned specifically for how people actually use each device size.",
+        "Mobile interactions are designed around real touch behavior. Navigation, tap targets, scrolling patterns, gestures, and feedback are structured to feel natural and effortless, helping users complete their tasks without friction.",
+        "As the viewport expands, the experience doesn't simply stretch. Layouts, grids, imagery, and content density are intentionally adapted to make better use of available space while maintaining the same visual language and interaction principles.",
+        "The result is a consistent experience across phones, tablets, laptops, and large desktop screens — with each device receiving a layout that feels purpose-built rather than like a smaller or larger version of something else."
       ],
+      heroImage: "/images/services/web-design/responsive-web-design.png",
     },
     whyChooseUs: [
       { title: "Mobile-first by process", description: "Small-screen experience designed first, not as an afterthought.", icon: "monitor" },
       { title: "Every breakpoint considered", description: "Deliberate layout decisions at each screen size, not just two extremes.", icon: "grid" },
       { title: "Touch-friendly interaction", description: "Navigation and controls sized and placed for real thumbs.", icon: "check" },
       { title: "Performance-aware", description: "Responsive images and layout choices that keep mobile load times low.", icon: "trending" },
+      { title: "Typography that scales cleanly", description: "Type systems tuned for readability from a small phone screen up to a large desktop display.", icon: "book" },
     ],
     features: [
       "Mobile-first design process",
@@ -1930,15 +1977,18 @@ export const services: ServiceDetail[] = [
     overview: {
       title: "Rankings follow architecture, not shortcuts",
       paragraphs: [
-        "Technical SEO — crawlability, Core Web Vitals, structured data, canonical strategy — is the foundation everything else depends on. We fix that first, because no amount of content or link building compensates for a site search engines struggle to crawl and understand.",
-        "From there, we build keyword-mapped content strategy, on-page optimization, and legitimate off-page authority building, all tied to measurable organic traffic and conversion outcomes — reported clearly, not buried in vanity metrics.",
+        "Now a days all kinds of business are going to be online to boost the revenue even offline business are also required the marketing to get the results. Digital marketing is the effective way to reach world wide targeted customer and can be done via diff. diff. methods .Such as SEO/SMO, PPC, Email marketing etc.",
+        "SEO (search engine optimization) is an activity that can make your site quality and increase quantity of traffic to provide organic result for your website. SEO improve your site ranking on search engines like: Google, Yahoo!, Bing etc. SEO provide better traffic quality and quantity to increase your business and attract all users to visit on your site.",
+        "SEO provide On-Page and Off-Page marketing that can make organic traffic, better BackLinks, Google Webmaster and Analytics, and sitemap.",
       ],
+      heroImage: "/images/services/digital-marketing/seo.png",
     },
     whyChooseUs: [
       { title: "Technical foundation first", description: "Crawlability and Core Web Vitals fixed before content strategy begins.", icon: "layers" },
       { title: "Keyword strategy tied to intent", description: "Targets terms that convert, not just terms with high volume.", icon: "search" },
       { title: "White-hat authority building", description: "Legitimate link and authority strategies, not shortcuts that risk penalties.", icon: "shield" },
       { title: "Clear, honest reporting", description: "Rankings and traffic tied to business outcomes, not vanity dashboards.", icon: "chart" },
+      { title: "Content built for intent", description: "Content strategy and optimization mapped directly to keyword and search intent research.", icon: "book" },
     ],
     features: [
       "Technical SEO audits & fixes",
@@ -2015,15 +2065,31 @@ export const services: ServiceDetail[] = [
     overview: {
       title: "The foundation every social campaign builds on",
       paragraphs: [
-        "Before running campaigns, we make sure the profiles themselves convert — complete, consistent branding, clear calls to action, optimized bios, and content structured for each platform's specific audience behavior.",
-        "This groundwork compounds: paid campaigns perform better landing on strong profiles, and organic content earns more engagement when the account structure supports discovery in the first place.",
+        "SMO (social media optimization) is an activity that can manage your site on social media and grow-up your presence. SMO improve site ranking on social media like: Facebook, Twitter, LinkedIn etc. SMO provide better traffic quality and quantity to improve your business and attract all users to visit on your site.",
+        "SMO provide On-Site and Off-Site marketing that can make organic traffic, better BackLinks, Google Webmaster and Analytics, and sitemap. Between the wider audience and the social network, your business and your brand and Creating affect the customer’s opinion about brand awareness.",
       ],
+      types: [
+        {
+          number: "01",
+          title: "On-Site SMO",
+          description:
+            "RSS feeds, Sharing/ Like buttons, User rating about new product/ service, Polls, Employee engagement initiative etc."
+        },
+        {
+          number: "02",
+          title: "Off-Site SMO",
+          description:
+            " Blogs, Participating in discussions, Joining social networks, Viral advertising, Press Release etc.",
+        }
+      ],
+      heroImage: "/images/services/digital-marketing/smo.png",
     },
     whyChooseUs: [
       { title: "Platform-specific strategy", description: "Content and profile structure tailored to how each platform actually works.", icon: "grid" },
       { title: "Consistent brand presence", description: "Unified visual identity and messaging across every channel.", icon: "star" },
       { title: "Engagement-focused content", description: "Structured to earn shares and interaction, not just impressions.", icon: "trending" },
       { title: "Foundation for paid + organic", description: "Optimized profiles that improve performance of every other channel.", icon: "check" },
+      { title: "Built for discoverability", description: "Hashtag and content structuring designed around how each platform's discovery algorithm actually works.", icon: "search" },
     ],
     features: [
       "Profile setup & optimization (bio, CTA, branding)",
@@ -2103,12 +2169,14 @@ export const services: ServiceDetail[] = [
         "PPC is only as good as what happens after the click. We build campaigns with tight keyword and audience targeting, but we spend just as much attention on landing page alignment and conversion tracking — because a well-targeted ad sending traffic to a weak page still wastes budget.",
         "Every campaign is set up with clear tracking from click to conversion, so budget decisions are based on actual return, not platform-reported clicks.",
       ],
+      heroImage: "/images/services/digital-marketing/ppc.png",
     },
     whyChooseUs: [
       { title: "ROI-first campaign structure", description: "Built around cost-per-acquisition and return, not just traffic volume.", icon: "trending" },
       { title: "Landing page alignment", description: "Ad messaging and destination pages built to match, not mismatch.", icon: "grid" },
       { title: "Accurate conversion tracking", description: "Full-funnel tracking so budget decisions rest on real data.", icon: "chart" },
       { title: "Continuous optimization", description: "Bid, audience, and creative testing run as an ongoing process.", icon: "check" },
+      { title: "Audience & keyword targeting", description: "Focused targeting helps reach high-intent users while reducing wasted ad spend.", icon: "target", },
     ],
     features: [
       "Google Ads (Search, Display, Shopping) campaigns",
@@ -2188,12 +2256,14 @@ export const services: ServiceDetail[] = [
         "Social media marketing works when content, community management, and paid amplification are planned together — not as three disconnected activities. We build a content strategy around your actual audience and business goals, produce the creative, manage the community, and layer in paid campaigns where they extend reach efficiently.",
         "Every program is tied to metrics that matter to the business — engaged reach, qualified traffic, and conversions — not just follower counts.",
       ],
+      heroImage: "/images/services/digital-marketing/social-media.png",
     },
     whyChooseUs: [
       { title: "Strategy-led content", description: "Every post ties back to a clear business or audience goal.", icon: "trending" },
-      { title: "Consistent brand voice", description: "A recognizable tone and visual identity across every platform.", icon: "star" },
       { title: "Active community management", description: "Real engagement with your audience, not just scheduled posting.", icon: "message" },
+      { title: "Consistent brand voice", description: "A recognizable tone and visual identity across every platform.", icon: "star" },
       { title: "Paid + organic working together", description: "Campaigns that amplify content already proven to perform.", icon: "check" },
+      { title: "Creative built for each platform", description: "Graphics and short-form video adapted to how each platform's audience actually consumes content.", icon: "video" },
     ],
     features: [
       "Content strategy & editorial calendar",
@@ -2268,4 +2338,8 @@ export function getServiceBySlug(slug: string): ServiceDetail | undefined {
 export function getServicesByCategory(categorySlug: ServiceCategorySlug): ServiceDetail[] {
   return services.filter((service) => service.categorySlug === categorySlug);
 }
+
+
+
+
 
