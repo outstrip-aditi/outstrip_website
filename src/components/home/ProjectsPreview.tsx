@@ -79,14 +79,8 @@ export function ProjectsPreview() {
 
                   {/* Gradient Overlay */}
                   <div
-                    className="absolute inset-0 transition-opacity duration-700"
-                    style={{
-                      background: `linear-gradient(180deg, 
-                      rgba(7,17,31,0.1) 0%, 
-                      rgba(7,17,31,0.3) 40%, 
-                      rgba(7,17,31,0.85) 70%, 
-                      rgba(7,17,31,0.95) 100%)`,
-                    }}
+                    className="absolute inset-0 transition-opacity duration-700 bg-ink/78"
+
                   />
 
                   {/* Color Accent Overlay */}
@@ -109,18 +103,8 @@ export function ProjectsPreview() {
                   </div>
 
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-8">
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-accent-bright">
-                          {project.year}
-                        </span>
-                        <span className="h-1 w-1 bg-white/30" />
-                        <span className="text-[10px] font-medium uppercase tracking-[0.15em] text-white/40">
-                          {project.outcome}
-                        </span>
-                      </div>
-
+                  <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-6">
+                    <div className="space-y-2">
                       <div className="flex items-end justify-between gap-4">
                         <div className="flex-1 min-w-0">
                           <h3
@@ -130,8 +114,12 @@ export function ProjectsPreview() {
                             {project.title}
                           </h3>
 
-                          <p className={`mt-2 leading-relaxed text-white/60 transition-opacity duration-500 group-hover:text-white/80 ${i === 0 ? "text-sm md:text-base max-w-xl" : "text-sm max-w-md"
-                            }`}>
+                          <p
+                            className={`mt-2 line-clamp-3 leading-relaxed text-white/80 transition-opacity duration-500 group-hover:text-white/80 ${i === 0
+                                ? "text-sm md:text-base max-w-xl"
+                                : "text-sm max-w-md"
+                              }`}
+                          >
                             {project.summary}
                           </p>
                         </div>
