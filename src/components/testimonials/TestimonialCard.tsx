@@ -24,12 +24,12 @@ export function TestimonialCard({
   return (
     <figure
       className={cn(
-        "flex h-full flex-col justify-between rounded-xl border border-border bg-surface p-7 shadow-[0_24px_60px_-40px_rgba(7,17,31,0.35)]",
+        "flex h-full flex-col justify-between border border-border bg-surface p-5 shadow-[0_24px_60px_-40px_rgba(7,17,31,0.35)]",
         className,
       )}
     >
       <div>
-        <div className="mb-6 flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <span className="font-display text-6xl leading-none text-ink/15">“</span>
 
           <div className="flex gap-1">
@@ -52,7 +52,7 @@ export function TestimonialCard({
         </blockquote>
       </div>
 
-      <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-6">
+      <figcaption className="mt-4 flex items-center gap-3 border-t border-border pt-3">
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent-deep via-accent to-accent-bright text-sm font-semibold text-white">
           {initials(testimonial.author)}
         </span>

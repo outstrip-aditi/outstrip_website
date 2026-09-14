@@ -36,7 +36,7 @@ export default function TestimonialsPage() {
             />
           </Reveal>
 
-          <StaggerChildren className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <StaggerChildren className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <div key={`${testimonial.author}-${index}`} data-stagger-item>
                 <TestimonialCard testimonial={testimonial} className="h-full transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-[0_24px_60px_-30px_rgba(7,17,31,0.3)]" />
