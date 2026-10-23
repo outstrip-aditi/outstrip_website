@@ -334,7 +334,7 @@ export default function TeamPage() {
       </section>
 
       {/* EVENTS (gallery)  */}
-      <section className="relative overflow-hidden border-t border-border bg-surface-soft py-20 md:py-28">
+      <section className="section-pad relative overflow-hidden border-t border-border bg-surface-soft py-20 md:py-28">
         {/* Background decoration */}
         <div className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
         <div className="pointer-events-none absolute -right-40 bottom-0 h-80 w-80 rounded-full bg-ink/5 blur-3xl" />

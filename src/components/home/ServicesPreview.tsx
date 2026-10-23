@@ -40,7 +40,7 @@ export function ServicesPreview() {
         defaults: { ease: "none" },
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top top+=80",
+          start: "top top+=13",
           end: `+=${Math.max(services.length * 650, 2200)}`,
           pin: true,
           scrub: 0.8,
@@ -124,9 +124,9 @@ export function ServicesPreview() {
       </div>
 
       <div ref={cardsRef} className="section-pad relative mt-12 md:mt-16">
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[550px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.06] blur-[100px]" />
+        
 
-        <div className="relative mx-auto h-[400px] w-full max-w-7xl sm:h-[400px] lg:h-[370px]">
+        <div className="relative mx-auto h-[480px] w-full max-w-7xl sm:h-[480px] lg:h-[440px]">
           {services.map((service, index) => {
             const image = serviceImages[service.slug];
 
@@ -138,7 +138,7 @@ export function ServicesPreview() {
           })}
         </div>
 
-        <div className="pointer-events-none relative z-[100] mt-8 flex items-center justify-center gap-2">
+        <div className="pointer-events-none relative z-[100] mt-10 flex items-center justify-center gap-2">
           {services.map((service) => (
             <span key={service.slug} className="h-1 w-6 rounded-full bg-ink/10 sm:w-10" aria-hidden="true" />
           ))}
@@ -157,7 +157,7 @@ type ServiceCardProps = {
 function ServiceCard({ service, image, index }: ServiceCardProps) {
   return (
     <Link href={`/services#${legacyServiceCategoryAnchor[service.slug] ?? service.slug}`} className="service-card-inner group relative grid w-full overflow-hidden rounded-lg border border-border bg-surface shadow-[0_8px_20px_-14px_rgba(7,17,31,0.22)] transition-all duration-500 md:grid-cols-2">
-      <div className="relative h-[220px] overflow-hidden bg-ink sm:h-[260px] md:h-full">
+      <div className="relative h-[480px] overflow-hidden bg-ink sm:h-[400px] lg:h-[440px] md:h-full">
         {image && (
           <Image src={image.src} alt={image.alt} fill priority={index === 0} sizes="(min-width: 1024px) 50vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
         )}
@@ -175,7 +175,7 @@ function ServiceCard({ service, image, index }: ServiceCardProps) {
         </div>
       </div>
 
-      <div className="flex flex-col justify-center gap-4 p-7 sm:p-6 md:p-8 lg:p-10">
+      <div className="flex flex-col justify-center gap-5 p-7 sm:p-7 md:p-9 lg:p-10">
         <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-accent/15 bg-accent/[0.07] text-accent-deep transition-all duration-500 group-hover:scale-110 group-hover:bg-accent/[0.12]">
           <ServiceIcon name={service.icon} />
         </div>

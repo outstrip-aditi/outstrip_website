@@ -210,6 +210,7 @@ export function Header() {
                                     <li key={item.href}>
                                       <Link
                                         href={item.href}
+                                        onClick={() => setOpen(false)}
                                         className="block py-1.5 text-base text-muted transition hover:text-accent-deep"
                                       >
                                         {item.label}
@@ -269,6 +270,7 @@ export function Header() {
                                 {services.map((service) => (
                                   <li key={service.slug}>
                                     <Link
+                                      onClick={() => setOpen(false)}
                                       href={`/services#${legacyServiceCategoryAnchor[service.slug] ?? service.slug}`}
                                       className="block py-1.5 text-base text-muted transition hover:text-accent-deep"
                                     >
@@ -328,6 +330,7 @@ export function Header() {
                                 {industries.map((industry) => (
                                   <li key={industry.slug}>
                                     <Link
+                                      onClick={() => setOpen(false)}
                                       href={`/industries/${industry.slug}`}
                                       className="block py-1.5 text-base text-muted transition hover:text-accent-deep"
                                     >
@@ -352,6 +355,7 @@ export function Header() {
                     >
                       <Link
                         href={link.href}
+                        onClick={() => setOpen(false)}
                         className={cn(
                           "font-display block py-2 text-4xl tracking-tight",
                           pathname === link.href ? "text-accent-deep" : "text-ink",

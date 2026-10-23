@@ -3,9 +3,8 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import { motion } from "motion/react";
 import { FiArrowUpRight, FiCode, FiLayers, FiZap } from "react-icons/fi";
-import { FaReact, FaNodeJs } from "react-icons/fa";
-import { SiNextdotjs, SiTypescript, SiMongodb } from "react-icons/si";
-
+import { FaReact, FaNodeJs, FaCloud } from "react-icons/fa";
+import { SiNextdotjs, SiTypescript, SiMongodb, SiDocker, SiPrisma, SiTailwindcss, SiAngular, SiApple } from "react-icons/si";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { gsap, ScrollTrigger, registerGSAP } from "@/lib/gsap";
@@ -19,15 +18,23 @@ type TechBadge = {
   cx: number;
   cy: number;
   duration: number;
+  connected: boolean;
 };
 
 const TECH_BADGES: TechBadge[] = [
-  { name: "React", Icon: FaReact, color: "#61DAFB", style: { top: "4%", left: "8%" }, cx: 14, cy: 8, duration: 5.4 },
-  { name: "Next.js", Icon: SiNextdotjs, color: "#000000", style: { top: "-6%", right: "20%" }, cx: 78, cy: -2, duration: 6.1 },
-  { name: "Node.js", Icon: FaNodeJs, color: "#339933", style: { top: "40%", right: "-9%" }, cx: 105, cy: 42, duration: 5.8 },
-  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6", style: { bottom: "0%", right: "10%" }, cx: 84, cy: 102, duration: 6.4 },
-  { name: "MongoDB", Icon: SiMongodb, color: "#47A248", style: { bottom: "-8%", left: "22%" }, cx: 20, cy: 106, duration: 5.9 },
-];
+  { name: "React", Icon: FaReact, color: "#61DAFB", style: { top: "4%", left: "8%" }, cx: 14, cy: 8, duration: 5.4, connected: true },
+  { name: "Next.js", Icon: SiNextdotjs, color: "#000000", style: { top: "-4%", right: "20%" }, cx: 78, cy: -2, duration: 6.1, connected: true },
+  { name: "Node.js", Icon: FaNodeJs, color: "#339933", style: { top: "40%", right: "-9%" }, cx: 105, cy: 42, duration: 5.8, connected: true },
+  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6", style: { bottom: "0%", right: "11%" }, cx: 84, cy: 102, duration: 6.4, connected: true },
+  { name: "MongoDB", Icon: SiMongodb, color: "#47A248", style: { bottom: "-7%", left: "22%" }, cx: 20, cy: 106, duration: 5.9, connected: true },
+
+  { name: "Docker", Icon: SiDocker, color: "#2496ED", style: { top: "30%", left: "-0%" }, cx: -5, cy: 25, duration: 5.6, connected: false },
+  { name: "Prisma", Icon: SiPrisma, color: "#2D3748", style: { top: "55%", left: "-2%" }, cx: -2, cy: 68, duration: 6.2, connected: false },
+  { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#06B6D4", style: { top: "3%", left: "42%" }, cx: 45, cy: -2, duration: 5.7, connected: false },
+  { name: "Salesforce", Icon: FaCloud, color: "#00A1E0", style: { top: "65%", right: "-5%" }, cx: 102, cy: 78, duration: 6.3, connected: false },
+  { name: "Angular", Icon: SiAngular, color: "#DD0031", style: { top: "90%", left: "45%" }, cx: 18, cy: 45, duration: 5.5, connected: false },
+  { name: "iOS", Icon: SiApple, color: "#000000", style: { top: "25%", right: "1%" }, cx: 92, cy: 15, duration: 6.0, connected: false },
+]
 
 const METRICS = [
   { value: 99, suffix: "%", label: "Uptime" },
@@ -318,10 +325,10 @@ export function Hero() {
             </div>
 
             {/* Heading */}
-            <h1 className="font-display text-[clamp(3rem,5.8vw,5.8rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-ink">
+            <h1 className="font-display text-[clamp(2.8rem,5.5vw,5.5rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-ink">
               <span className="block overflow-hidden">
                 <span data-hero-word className="inline-block">
-                  Build.
+                  Build. 
                 </span>
               </span>
               <span className="block overflow-hidden">
@@ -394,7 +401,7 @@ export function Hero() {
                 viewBox="0 0 100 100"
                 aria-hidden
               >
-                {TECH_BADGES.map((badge) => (
+                {TECH_BADGES.filter((badge) => badge.connected).map((badge) => (
                   <path
                     key={badge.name}
                     data-connection-path
@@ -448,10 +455,10 @@ export function Hero() {
               <motion.div
                 whileHover={reduced ? undefined : { y: -8, scale: 1.015 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 w-[76%] overflow-hidden rounded-lg border border-border bg-surface/90 p-5 shadow-[0_40px_100px_-35px_rgba(7,17,31,0.35)] backdrop-blur-xl sm:p-7"
+                className="relative z-10 w-[76%] overflow-hidden rounded-lg border border-border bg-surface/90 p-4 shadow-[0_40px_100px_-35px_rgba(7,17,31,0.35)] backdrop-blur-xl sm:p-7"
               >
                 {/* Browser header */}
-                <div className="flex items-center justify-between border-b border-border pb-4">
+                <div className="flex items-center justify-between border-b border-border pb-2">
                   <div className="flex items-center gap-1.5">
                     <span className="h-2 w-2 rounded-full bg-ink/15" />
                     <span className="h-2 w-2 rounded-full bg-ink/15" />
@@ -463,7 +470,7 @@ export function Hero() {
                 </div>
 
                 {/* Live status */}
-                <div className="mt-5 flex items-center justify-between">
+                <div className="mt-4 flex items-center justify-between">
                   <span className="text-xs font-semibold text-ink">
                     Live engine
                   </span>
@@ -542,9 +549,9 @@ export function Hero() {
                       reduced
                         ? undefined
                         : {
-                            scale: 1.15,
-                            boxShadow: "0 0 0 1px var(--accent), 0 12px 30px -10px var(--glow)",
-                          }
+                          scale: 1.15,
+                          boxShadow: "0 0 0 1px var(--accent), 0 12px 30px -10px var(--glow)",
+                        }
                     }
                   >
                     <Icon className="h-7 w-7" style={{ color: badge.color }} />

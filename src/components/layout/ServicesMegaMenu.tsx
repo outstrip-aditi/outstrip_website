@@ -8,6 +8,7 @@ import { FiChevronDown, FiArrowUpRight } from "react-icons/fi";
 import { serviceImages } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import { registerGSAP } from "@/lib/gsap";
+import { usePathname } from "next/navigation";
 
 type ServiceCategory = {
   title: string;
@@ -110,6 +111,7 @@ const megaServices: ServiceCategory[] = [
 ];
 
 export function ServicesMegaMenu({ active }: { active: boolean }) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [activeService, setActiveService] = useState(
     megaServices[0],
@@ -123,6 +125,15 @@ export function ServicesMegaMenu({ active }: { active: boolean }) {
     registerGSAP();
   }, []);
 
+
+  useEffect(() => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+
+    setOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const panel = panelRef.current;
@@ -263,6 +274,17 @@ export function ServicesMegaMenu({ active }: { active: boolean }) {
       {/* Mega Menu */}
       <div
         ref={panelRef}
+        onClick={(event) => {
+          const target = event.target as HTMLElement;
+          if (target.closest("a")) {
+            if (closeTimer.current) {
+              clearTimeout(closeTimer.current);
+              closeTimer.current = null;
+            }
+
+            setOpen(false);
+          }
+        }}
         className="fixed left-1/2 top-[74px] z-[999] hidden w-[min(1180px,calc(100vw-32px))] -translate-x-1/2 pt-3 opacity-0"
       >
         <div
