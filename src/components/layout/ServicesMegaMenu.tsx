@@ -9,6 +9,7 @@ import { serviceImages } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import { registerGSAP } from "@/lib/gsap";
 import { usePathname } from "next/navigation";
+import { useExclusiveMenu } from "@/components/layout/useExclusiveMenu";
 
 type ServiceCategory = {
   title: string;
@@ -125,6 +126,13 @@ export function ServicesMegaMenu({ active }: { active: boolean }) {
     registerGSAP();
   }, []);
 
+  useExclusiveMenu("services", open, () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setOpen(false);
+  });
 
   useEffect(() => {
     if (closeTimer.current) {

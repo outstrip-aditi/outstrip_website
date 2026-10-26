@@ -4,12 +4,21 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { industries } from "@/lib/data";
-import { industryImages } from "@/lib/images";
+import { industryImages as baseIndustryImages } from "@/lib/images";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { gsap, registerGSAP } from "@/lib/gsap";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { cn } from "@/lib/utils";
+
+// Homepage-only override for the Media panel.
+const industryImages: typeof baseIndustryImages = {
+  ...baseIndustryImages,
+  media: {
+    src: "/images/industries/social-media.png",
+    alt: "Laptop showing a social media news page",
+  },
+};
 
 export function IndustriesSection() {
   const [active, setActive] = useState(0);

@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useExclusiveMenu } from "@/components/layout/useExclusiveMenu";
 import { services } from "@/lib/data";
 import { images } from "@/lib/images";
 import { gsap, registerGSAP } from "@/lib/gsap";
@@ -56,6 +58,7 @@ const aboutItems: AboutItem[] = [
 ];
 
 export function AboutMegaMenu({ active }: { active: boolean }) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(aboutItems[0].href);
 
@@ -92,6 +95,18 @@ export function AboutMegaMenu({ active }: { active: boolean }) {
     setHovered(aboutItems[0].href);
     setOpen(true);
   };
+
+  const closeNow = () => {
+    cancelClose();
+    setOpen(false);
+  };
+
+  useExclusiveMenu("about", open, closeNow);
+
+  useEffect(() => {
+    cancelClose();
+    setOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const panel = panelRef.current;
@@ -213,6 +228,9 @@ export function AboutMegaMenu({ active }: { active: boolean }) {
         onMouseLeave={scheduleClose}
         onFocus={cancelClose}
         onBlur={scheduleClose}
+        onClick={(event) => {
+          if ((event.target as HTMLElement).closest("a")) closeNow();
+        }}
       >
         <div className="overflow-hidden rounded-lg border border-border bg-surface shadow-[0_30px_80px_-35px_rgba(7,17,31,0.4)]">
           <div className="grid min-h-350px] grid-cols-[0.7fr_1.1fr]">

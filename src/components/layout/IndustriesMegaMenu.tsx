@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useExclusiveMenu } from "@/components/layout/useExclusiveMenu";
 import { gsap } from "gsap";
 import { FiChevronDown, FiArrowUpRight } from "react-icons/fi";
 
@@ -13,6 +15,7 @@ import { registerGSAP } from "@/lib/gsap";
 import { IndustryIcon } from "@/components/industries/IndustryIcon";
 
 export function IndustriesMegaMenu({ active }: { active: boolean }) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [activeIndustry, setActiveIndustry] = useState<Industry>(industries[0]);
 
@@ -125,6 +128,18 @@ export function IndustriesMegaMenu({ active }: { active: boolean }) {
     }
   };
 
+  const closeNow = () => {
+    cancelClose();
+    setOpen(false);
+  };
+
+  useExclusiveMenu("industries", open, closeNow);
+
+  useEffect(() => {
+    cancelClose();
+    setOpen(false);
+  }, [pathname]);
+
   const activeImage = industryImages[activeIndustry.slug];
 
   return (
@@ -163,6 +178,9 @@ export function IndustriesMegaMenu({ active }: { active: boolean }) {
       {/* Mega Menu */}
       <div
         ref={panelRef}
+        onClick={(event) => {
+          if ((event.target as HTMLElement).closest("a")) closeNow();
+        }}
         className="fixed left-1/2 top-[74px] z-[999] hidden w-[min(1180px,calc(100vw-32px))] -translate-x-1/2 pt-3 opacity-0"
       >
         <div
