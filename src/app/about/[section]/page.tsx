@@ -15,7 +15,6 @@ import {
 
 import {
     images,
-    teamPhotos,
 } from "@/lib/images";
 
 import {
@@ -49,6 +48,7 @@ import {
     culturePoints,
 } from "@/lib/aboutData";
 import { IndustryExpertiseContent } from "@/components/about/IndustryExpertiseContent";
+import { ProcessSection } from "@/components/home/ProcessSection";
 
 type Props = {
     params: Promise<{
@@ -202,7 +202,7 @@ export default async function AboutSectionPage({
                     <Reveal>
                         <Link
                             href="/about"
-                            className="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 shadow-sm transition-all duration-300 hover:border-accent/40 hover:text-accent"
+                            className="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-600 shadow-sm transition-all duration-300 hover:border-accent/40 hover:text-accent"
                         >
                             <FiArrowRight className="h-3.5 w-3.5 rotate-180 transition-transform duration-300 group-hover:-translate-x-1" />
                             Back to about
@@ -216,12 +216,12 @@ export default async function AboutSectionPage({
                                 {content.eyebrow}
                             </p>
 
-                            <h1 className="mt-6 max-w-4xl font-display text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-slate-950 sm:text-5xl md:text-7xl lg:text-[72px]">
+                            <h1 className="mt-6 max-w-4xl font-display text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-slate-950 sm:text-5xl md:text-7xl lg:text-[62px]">
                                 {content.title}
                             </h1>
 
                             {/* Description */}
-                            <p className="mt-7 max-w-2xl text-sm leading-8 text-slate-600 sm:text-lg sm:leading-9">
+                            <p className="mt-7 max-w-2xl text-sm leading-8 text-slate-600 sm:text-base sm:leading-9">
                                 {content.description}
                             </p>
 
@@ -239,7 +239,7 @@ export default async function AboutSectionPage({
             <section className="section-pad py-20 md:py-28">
                 <div className="container-wide">
                     <Reveal>
-                        <div className="group relative aspect-[21/9] overflow-hidden bg-surface">
+                        <div className="group relative aspect-[25/9] overflow-hidden bg-surface">
                             <Image
                                 src={content.image.src}
                                 alt={content.image.alt}
@@ -262,7 +262,7 @@ export default async function AboutSectionPage({
 
 
             {section === "mission" && (
-                <section className="section-pad pb-24 md:pb-32">
+                <section className="section-pad pb-20 md:pb-20">
                     <div className="container-wide">
                         <Reveal>
                             <SectionHeading
@@ -277,13 +277,13 @@ export default async function AboutSectionPage({
                                 <article
                                     key={item.title}
                                     data-stagger-item
-                                    className="group border-t border-border py-8 transition-transform duration-500 hover:-translate-y-1"
+                                    className="group border-t border-border py-6 transition-transform duration-500 hover:-translate-y-1"
                                 >
                                     <span className="text-[10px] font-semibold tracking-[0.2em] text-accent">
                                         {String(index + 1).padStart(2, "0")}
                                     </span>
 
-                                    <h3 className="mt-6 font-display text-2xl font-semibold text-ink">
+                                    <h3 className="mt-4 font-display text-2xl font-semibold text-ink">
                                         {item.title}
                                     </h3>
 
@@ -535,9 +535,8 @@ export default async function AboutSectionPage({
                         </Reveal>
 
                         <StaggerChildren className="mt-16 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
-                            {team.slice(0, 6).map((member, index) => {
-                                const photo =
-                                    teamPhotos[index % teamPhotos.length];
+                            {team.slice(0, 6).map((member) => {
+                                const photo = member.image;
 
                                 return (
                                     <article
@@ -551,7 +550,7 @@ export default async function AboutSectionPage({
                                                 alt={`${member.name} — ${member.role}`}
                                                 fill
                                                 sizes="(min-width: 1024px) 33vw, 100vw"
-                                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>
 
@@ -608,7 +607,7 @@ export default async function AboutSectionPage({
                 </div>
             </section>
 
-            <section className="section-pad py-16 md:py-20">
+            <section className="section-pad pt-16 md:pt-20">
                 <div className="container-wide">
                     <div className="grid gap-8 md:grid-cols-2">
                         {previous ? (
@@ -654,32 +653,7 @@ export default async function AboutSectionPage({
                 </div>
             </section>
 
-            <section className="section-pad bg-surface-soft py-20 md:py-28">
-                <div className="container-wide">
-                    <Reveal>
-                        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-                            <div>
-                                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-deep">
-                                    Let&apos;s work together
-                                </p>
-
-                                <h2 className="mt-4 max-w-3xl font-display text-3xl font-semibold text-ink md:text-5xl">
-                                    Have a challenge worth solving?
-                                </h2>
-                            </div>
-
-                            <MagneticButton
-                                href="/contact"
-                                variant="primary"
-                                size="lg"
-                            >
-                                Setup a call with us
-                                <FiArrowUpRight className="h-4 w-4" />
-                            </MagneticButton>
-                        </div>
-                    </Reveal>
-                </div>
-            </section>
+            <ProcessSection />
         </PageShell>
     );
 }

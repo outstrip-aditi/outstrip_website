@@ -44,7 +44,7 @@ const aboutItems: AboutItem[] = [
     image: images.missionVision,
   },
   {
-    href: "/careers",
+    href: "/about/careers",
     label: "Careers",
     description: "Open roles and life at OUTSTRIP.",
     image: images.careers,

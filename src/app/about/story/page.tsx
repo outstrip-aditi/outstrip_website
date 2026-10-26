@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
-import { siteConfig, stats } from "@/lib/data";
+import { siteConfig } from "@/lib/data";
 import { images } from "@/lib/images";
 import { PageHero, PageShell } from "@/components/layout/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { StatsSection } from "@/components/home/StatsSection";
+import { ProcessSection } from "@/components/home/ProcessSection";
 
 const milestones = [
   {
@@ -49,7 +50,7 @@ export default function StoryPage() {
       <section className="section-pad py-20 md:py-28">
         <div className="container-wide grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
           <Reveal>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
+            <div className="relative aspect-[7/5] overflow-hidden rounded-xl">
               <Image
                 src={images.ourStory.src}
                 alt={images.ourStory.alt}
@@ -103,23 +104,10 @@ export default function StoryPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-ink py-20 text-white md:py-28">
-        <div className="container-wide">
-          <Reveal>
-            <SectionHeading light eyebrow="By the numbers" title="Where we stand today" />
-          </Reveal>
-          <div className="mt-14 grid grid-cols-2 gap-8 md:grid-cols-3">
-            {stats.slice(0, 6).map((s) => (
-              <div key={s.label}>
-                <p className="font-display text-4xl">
-                  <AnimatedCounter value={s.value} suffix={s.suffix} />
-                </p>
-                <p className="mt-2 text-sm text-white/55">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StatsSection />
+
+      <ProcessSection />
+
     </PageShell>
   );
 }
