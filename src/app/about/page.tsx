@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -28,11 +29,7 @@ import { AboutOverviewStack } from "@/components/about/AboutOverviewStack";
 import { CommunitySection } from "@/components/about/CommunitySection";
 import { OurWorkSection } from "@/components/about/OurWorkSection";
 
-export const metadata: Metadata = {
-  title: "About | OUTSTRIP",
-  description:
-    "Discover OUTSTRIP — a technology company building digital products, platforms, and software solutions.",
-};
+export const metadata: Metadata = pageMetadata("/about", { title: "About | OUTSTRIP", description: "Discover OUTSTRIP — a technology company building digital products, platforms, and software solutions." }, "about");
 
 const iconMap = {
   "Our Mission": FiCompass,

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { siteConfig, testimonials } from "@/lib/data";
 import { PageHero, PageShell } from "@/components/layout/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
@@ -7,11 +8,7 @@ import { StaggerChildren } from "@/components/ui/StaggerChildren";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { TestimonialCard } from "@/components/testimonials/TestimonialCard";
 
-export const metadata: Metadata = {
-  title: "Testimonials",
-  description: `What clients say about working with ${siteConfig.name} — real feedback from the businesses we've built for.`,
-  alternates: { canonical: `${siteConfig.url}/testimonials` },
-};
+export const metadata: Metadata = pageMetadata("/testimonials", { title: "Testimonials", description: `What clients say about working with ${siteConfig.name} — real feedback from the businesses we've built for.` });
 
 export default function TestimonialsPage() {
   return (

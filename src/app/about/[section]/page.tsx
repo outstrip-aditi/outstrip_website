@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -140,12 +141,14 @@ export async function generateMetadata({
 
     const content = pageContent[section];
 
-    return {
-        title: content?.eyebrow ?? "About",
-        description:
-            content?.description ??
-            "Learn more about OUTSTRIP.",
-    };
+    if (!content) {
+        return { title: "About", robots: { index: false, follow: false } };
+    }
+
+    return pageMetadata(`/about/${section}`, {
+        title: content.eyebrow,
+        description: content.description,
+    });
 }
 
 export default async function AboutSectionPage({

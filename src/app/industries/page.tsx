@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
@@ -12,10 +13,7 @@ import { IndustriesSection } from "@/components/home/IndustriesSection";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { IndustryIcon } from "@/components/industries/IndustryIcon";
 
-export const metadata: Metadata = {
-  title: "Industries",
-  description: `Domain fluency across e-commerce, healthcare, education, and more — how ${siteConfig.name} builds for how your industry actually operates.`,
-};
+export const metadata: Metadata = pageMetadata("/industries", { title: "Industries", description: `Domain fluency across e-commerce, healthcare, education, and more — how ${siteConfig.name} builds for how your industry actually operates.` });
 
 export default function IndustriesPage() {
   return (

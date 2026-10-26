@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import {
   FiArrowRight,
@@ -24,10 +25,7 @@ const projectTypeOptions = [
   { label: "Other", value: "other" },
 ];
 
-export const metadata: Metadata = {
-  title: "Talk to Founders",
-  description: `Talk directly with the founders of ${siteConfig.name} about your project, idea, or business challenge.`,
-};
+export const metadata: Metadata = pageMetadata("/about/talks-to-founders", { title: "Talk to Founders", description: `Talk directly with the founders of ${siteConfig.name} about your project, idea, or business challenge.` });
 
 const founders = [
   {

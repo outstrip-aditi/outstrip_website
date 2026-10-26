@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { values, careers, siteConfig } from "@/lib/data";
 import { videos } from "@/lib/videos";
 import { PageHero, PageShell } from "@/components/layout/PageHero";
@@ -8,10 +9,7 @@ import { StaggerChildren } from "@/components/ui/StaggerChildren";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { BackgroundVideo } from "@/components/ui/BackgroundVideo";
 
-export const metadata: Metadata = {
-  title: "Careers at OUTSTRIP",
-  description: `Life at ${siteConfig.name} — culture, values, and how to join the team.`,
-};
+export const metadata: Metadata = pageMetadata("/about/careers", { title: "Careers at OUTSTRIP", description: `Life at ${siteConfig.name} — culture, values, and how to join the team.` });
 
 export default function AboutCareersPage() {
   return (

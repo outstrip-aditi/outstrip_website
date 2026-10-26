@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Hero } from "@/components/home/Hero";
 import { TechMarquee } from "@/components/home/TechMarquee";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
@@ -11,6 +13,15 @@ import { ProcessSection } from "@/components/home/ProcessSection";
 import { PageShell } from "@/components/layout/PageHero";
 import { AboutPreview } from "@/components/home/AboutPreview";
 
+export const metadata: Metadata = pageMetadata(
+  "/",
+  {
+    title: "Outstrip InfoTech",
+    description: "",
+  },
+  "home",
+);
+
 export default function HomePage() {
   return (
     <PageShell>
@@ -20,7 +31,7 @@ export default function HomePage() {
       <ServicesPreview />
       <StatsSection />
       <ProjectsPreview />
-      <GrowthPartnersSection />
+      {/* <GrowthPartnersSection /> */}
       <IndustriesSection />
       <TestimonialsSection />
       <FAQSection />

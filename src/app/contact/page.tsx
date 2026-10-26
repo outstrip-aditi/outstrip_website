@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import {
   FiArrowRight,
@@ -21,11 +22,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Contact OUTSTRIP InfoTech in Jaipur — start a web, mobile, or growth project.",
-};
+export const metadata: Metadata = pageMetadata("/contact", { title: "Contact", description: "Contact OUTSTRIP InfoTech in Jaipur — start a web, mobile, or growth project." }, "contact");
 
 export default function ContactPage() {
   const mapQuery = encodeURIComponent(siteConfig.address);

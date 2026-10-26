@@ -7,6 +7,9 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/data";
+import { referencePageSeo } from "@/lib/referenceSeo";
+import { images } from "@/lib/images";
+import { ogImageFor, SEO_LOCALE, SEO_SITE_NAME } from "@/lib/seo";
 import "./globals.css";
 
 const display = Syne({
@@ -24,10 +27,10 @@ const body = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Web, Mobile & Digital Growth`,
-    template: `%s · ${siteConfig.name}`,
+    default: "Website Design, Mobile App Development and SEO Company in Jaipur",
+    template: `%s - ${SEO_SITE_NAME}`,
   },
-  description: siteConfig.description,
+  description: referencePageSeo.home.description ?? siteConfig.description,
   keywords: [
     "web development",
     "mobile app development",
@@ -39,24 +42,26 @@ export const metadata: Metadata = {
     "Outstrip Infotech",
   ],
   openGraph: {
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: referencePageSeo.home.title,
+    description: referencePageSeo.home.description ?? siteConfig.description,
     url: siteConfig.url,
-    siteName: siteConfig.name,
-    locale: "en_IN",
+    siteName: SEO_SITE_NAME,
+    locale: SEO_LOCALE,
     type: "website",
+    images: [ogImageFor(images.hero.src, images.hero.alt)],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: referencePageSeo.home.title,
+    description: referencePageSeo.home.description ?? siteConfig.description,
+    images: [ogImageFor(images.hero.src, images.hero.alt).url],
   },
   robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} h-full antialiased`}>
+    <html lang="en-IN" className={`${display.variable} ${body.variable} h-full antialiased`}>
       <body className="page-shell min-h-full flex flex-col font-sans">
         <JsonLd />
         <Providers>

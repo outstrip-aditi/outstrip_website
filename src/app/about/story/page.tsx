@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { siteConfig, stats } from "@/lib/data";
 import { images } from "@/lib/images";
@@ -34,10 +35,7 @@ const milestones = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "Our Story",
-  description: `How ${siteConfig.name} grew from a Jaipur startup into an ISO-certified software company serving clients worldwide.`,
-};
+export const metadata: Metadata = pageMetadata("/about/story", { title: "Our Story", description: `How ${siteConfig.name} grew from a Jaipur startup into an ISO-certified software company serving clients worldwide.` });
 
 export default function StoryPage() {
   return (

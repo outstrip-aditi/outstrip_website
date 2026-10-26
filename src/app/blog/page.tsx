@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
 import { siteConfig } from "@/lib/data";
 import { getAllPosts } from "@/lib/blog";
@@ -7,15 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { StaggerChildren } from "@/components/ui/StaggerChildren";
 import { BlogCard } from "@/components/blog/BlogCard";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description: `Insights on engineering, product, design, and growth from the ${siteConfig.name} team.`,
-  openGraph: {
-    title: `Blog · ${siteConfig.name}`,
-    description: "Insights on engineering, product, design, and growth.",
-    type: "website",
-  },
-};
+export const metadata: Metadata = pageMetadata("/blog", { title: "Blog", description: `Insights on engineering, product, design, and growth from the ${siteConfig.name} team.` }, "blog");
 
 export default function BlogPage() {
   const posts = getAllPosts();

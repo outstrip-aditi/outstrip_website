@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
-import { siteConfig } from "@/lib/data";
 import { serviceCategories, getServicesByCategory } from "@/lib/services";
 import { PageHero, PageShell } from "@/components/layout/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
@@ -9,12 +9,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StaggerChildren } from "@/components/ui/StaggerChildren";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Web development, e-commerce, hosting, mobile apps, web design, and digital marketing services from OUTSTRIP — every service has a dedicated page.",
-  alternates: { canonical: `${siteConfig.url}/services` },
-};
+export const metadata: Metadata = pageMetadata("/services", { title: "Services", description: "Web development, e-commerce, hosting, mobile apps, web design, and digital marketing services from OUTSTRIP — every service has a dedicated page." });
 
 export default function ServicesPage() {
   return (

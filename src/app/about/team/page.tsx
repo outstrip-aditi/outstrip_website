@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { FiArrowDownRight, FiArrowRight, FiArrowUpRight, FiHeart, FiUsers, FiZap } from "react-icons/fi";
 
@@ -12,10 +13,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { TiltCard } from "@/components/ui/TiltCard";
 import LeadershipCard from "@/components/about/LeadershipCard";
 
-export const metadata: Metadata = {
-  title: "Our Team",
-  description: `Meet the specialists behind ${siteConfig.name} — designers, engineers, and strategists shipping products for global clients.`,
-};
+export const metadata: Metadata = pageMetadata("/about/team", { title: "Our Team", description: `Meet the specialists behind ${siteConfig.name} — designers, engineers, and strategists shipping products for global clients.` });
 
 const momentSpans = [
   "row-span-2",

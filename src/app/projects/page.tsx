@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { PageHero, PageShell } from "@/components/layout/PageHero";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { PortfolioGrid } from "@/components/portfolio/PortfolioGrid";
 import { ProcessSection } from "@/components/home/ProcessSection";
 
-export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Selected OUTSTRIP portfolio — e-commerce, healthcare, logistics, education, and more.",
-};
+export const metadata: Metadata = pageMetadata("/projects", { title: "Portfolio", description: "Selected OUTSTRIP portfolio — e-commerce, healthcare, logistics, education, and more." }, "projects");
 
 export default function ProjectsPage() {
   return (

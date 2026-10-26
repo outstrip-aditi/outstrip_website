@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/data";
 import { PageShell } from "@/components/layout/PageHero";
 import { HireDevelopersHero } from "@/components/hire-developers/HireDevelopersHero";
@@ -12,10 +13,7 @@ import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { HireFaqSection } from "@/components/hire-developers/HireFaqSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
 
-export const metadata: Metadata = {
-  title: "Hire Developers",
-  description: `Hire vetted, senior developers from ${siteConfig.name} — dedicated teams, fixed-scope builds, or staff augmentation.`,
-};
+export const metadata: Metadata = pageMetadata("/hire-developers", { title: "Hire Developers", description: `Hire vetted, senior developers from ${siteConfig.name} — dedicated teams, fixed-scope builds, or staff augmentation.` }, "hireDevelopers");
 
 export default function HireDevelopersPage() {
   return (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import {
     FiCloud,
     FiShield,
@@ -16,12 +17,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ProcessSection } from "@/components/home/ProcessSection";
 import { ProductShowcase } from "@/components/products/ProductShowcase";
 
-export const metadata: Metadata = {
-    title: "Our Products",
-    description:
-        "OUTSTRIP's suite of software products — Accounting Software, Office Management, DSC Signature Tool, and GST Software — built for accounting and compliance teams.",
-    alternates: { canonical: `${siteConfig.url}/our-products` },
-};
+export const metadata: Metadata = pageMetadata("/our-products", { title: "Our Products", description: "OUTSTRIP's suite of software products — Accounting Software, Office Management, DSC Signature Tool, and GST Software — built for accounting and compliance teams." });
 
 const features = [
     {

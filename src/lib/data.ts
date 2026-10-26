@@ -1,10 +1,18 @@
+
+function resolveSiteUrl() {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+  const vercel = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  const raw = explicit || (vercel ? `https://${vercel}` : "https://outstripinfotech.com");
+  return raw.replace(/\/+$/, "");
+}
+
 export const siteConfig = {
   name: "OUTSTRIP",
   legalName: "Outstrip InfoTech Private Limited",
   tagline: "Build digital products that outperform",
   description:
     "Outstrip infotech Pvt. Ltd. was established to solve these concerns. We are a desktop, web and mobile application development company which is presently available to bring about the complex structure of the companies and the spirit of compatibility between the requirements of medium and small enterprises are there.",
-  url: "https://outstripinfotech.com",
+  url: resolveSiteUrl(),
   email: "info@outstripinfotech.com",
   phone: "+91 87690 06030",
   phoneAlt: "+91 97855 66636",

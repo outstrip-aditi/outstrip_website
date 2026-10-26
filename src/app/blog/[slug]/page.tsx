@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { absoluteUrl, buildMetadata, SEO_SITE_NAME } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { notFound } from "next/navigation";
 import {
   FiArrowLeft,
@@ -36,27 +38,17 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
-  if (!post) return { title: "Blog" };
+  if (!post) return { title: "Blog", robots: { index: false, follow: false } };
 
-  return {
-    title: post.title,
+  return buildMetadata({
+    title: `${post.title} - ${SEO_SITE_NAME}`,
     description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: "article",
-      publishedTime: post.date,
-      authors: [post.author.name],
-      images: [{ url: post.image.src, alt: post.image.alt }],
-      url: `${siteConfig.url}/blog/${post.slug}`,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image.src],
-    },
-  };
+    path: `/blog/${post.slug}`,
+    type: "article",
+    publishedTime: post.date,
+    authors: [post.author.name],
+    image: { src: post.image.src, alt: post.image.alt },
+  });
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -74,7 +66,7 @@ export default async function BlogPostPage({ params }: Props) {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
-    image: post.image.src,
+    image: absoluteUrl(post.image.src),
     author: { "@type": "Person", name: post.author.name },
     publisher: { "@type": "Organization", name: siteConfig.name },
     mainEntityOfPage: shareUrl,
@@ -85,6 +77,14 @@ export default async function BlogPostPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]}
       />
 
       <article className="relative overflow-hidden mesh-bg pb-10 pt-32 md:pb-10 md:pt-32">
