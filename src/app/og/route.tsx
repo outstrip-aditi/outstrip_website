@@ -15,11 +15,6 @@ const DEFAULT_PAD_Y = 140;
 
 const DEFAULT_IMAGE = "/images/logo.png";
 
-const REMOTE_HOSTS = new Set([
-  "images.unsplash.com",
-  "outstripinfotech.com",
-]);
-
 async function loadSource(src: string): Promise<Buffer | null> {
   try {
     // Load local public assets safely.
@@ -34,50 +29,8 @@ async function loadSource(src: string): Promise<Buffer | null> {
       return await readFile(file);
     }
 
-    const url = new URL(src);
-
-    if (
-      url.protocol !== "https:" ||
-      !REMOTE_HOSTS.has(url.hostname) ||
-      url.username ||
-      url.password
-    ) {
-      return null;
-    }
-
-    // Request the complete Unsplash image rather than a pre-cropped version.
-    if (url.hostname === "images.unsplash.com") {
-      for (const key of ["auto", "fit", "h", "crop", "ar"]) {
-        url.searchParams.delete(key);
-      }
-
-      url.searchParams.set("w", "1800");
-      url.searchParams.set("fm", "jpg");
-    }
-
-    const response = await fetch(url, {
-      signal: AbortSignal.timeout(8000),
-      redirect: "error",
-    });
-
-    if (!response.ok) {
-      return null;
-    }
-
-    const contentType = response.headers.get("content-type") ?? "";
-
-    if (!contentType.startsWith("image/")) {
-      return null;
-    }
-
-    const buffer = Buffer.from(await response.arrayBuffer());
-
-    // Reject unexpectedly large source images.
-    if (buffer.length > 15 * 1024 * 1024) {
-      return null;
-    }
-
-    return buffer;
+    // Only self-hosted assets from /public are supported.
+    return null;
   } catch {
     return null;
   }

@@ -141,7 +141,7 @@ export const projects = [
     outcome: "Modern flooring product experience",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/grovedaleflooring-1.jpg",
+      "/images/projects/grovedaleflooring.jpg",
     projectUrl: "http://grovedaleflooring.com.au",
     color: "#0D9F8A",
   },
@@ -156,7 +156,7 @@ export const projects = [
     outcome: "Improved online customer experience",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/nutrition-1.jpg",
+      "/images/projects/nutrition.jpg",
     projectUrl: "https://wholenutrition.co.in/",
     color: "#E85D04",
   },
@@ -171,7 +171,7 @@ export const projects = [
     outcome: "Accessible and informative web experience",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/utahseniorplanning-1.jpg",
+      "/images/projects/utahseniorplanning.jpg",
     projectUrl: "https://www.utahseniorplanning.com/",
     color: "#1B6BFF",
   },
@@ -187,7 +187,7 @@ export const projects = [
     outcome: "Streamlined digital education experience",
     technology: "PHP",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/merittoonline-1.jpg",
+      "/images/projects/merittoonline.jpg",
     projectUrl: "http://meritto.in/",
     color: "#6B5B95",
   },
@@ -202,7 +202,7 @@ export const projects = [
     outcome: "Improved online education experience",
     technology: "Shopify",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/simbans-1.jpg",
+      "/images/projects/simbans.jpg",
     projectUrl: "https://www.simbans.com/",
     color: "#1B6BFF",
   },
@@ -217,7 +217,7 @@ export const projects = [
     outcome: "Modern school web presence",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/bkj-1.jpg",
+      "/images/projects/bkj.jpg",
     projectUrl: "https://bkjsappleorchardschool.in/",
     color: "#2A9D8F",
   },
@@ -233,7 +233,7 @@ export const projects = [
     outcome: "Modern and engaging restaurant web experience",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/starlitecuisine-1.jpg",
+      "/images/projects/starlitecuisine.jpg",
     projectUrl: "https://starlitecuisine.com",
     color: "#E85D04",
   },
@@ -249,7 +249,7 @@ export const projects = [
     outcome: "Modern and accessible healthcare web experience",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/grovedaleflooring-1.jpg",
+      "/images/projects/grovedaleflooring.jpg",
     projectUrl: "http://grovedaleflooring.com.au",
     color: "#0D9F8A",
   },
@@ -263,7 +263,7 @@ export const projects = [
     outcome: "Improved online nutrition experience",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/nutrition-1.jpg",
+      "/images/projects/nutrition.jpg",
     projectUrl: "https://wholenutrition.co.in/",
     color: "#E85D04",
   },
@@ -277,7 +277,7 @@ export const projects = [
     outcome: "Accessible and informative digital experience",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/utahseniorplanning-1.jpg",
+      "/images/projects/utahseniorplanning.jpg",
     projectUrl: "https://www.utahseniorplanning.com/",
     color: "#1B6BFF",
   },
@@ -294,7 +294,7 @@ export const projects = [
     outcome: "Modern real estate web experience",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/grovedaleflooring-1.jpg",
+      "/images/projects/grovedaleflooring.jpg",
     projectUrl: "http://grovedaleflooring.com.au",
     color: "#0D9F8A",
   },
@@ -308,7 +308,7 @@ export const projects = [
     outcome: "Improved online customer experience",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/nutrition-1.jpg",
+      "/images/projects/nutrition.jpg",
     projectUrl: "https://wholenutrition.co.in/",
     color: "#E85D04",
   },
@@ -322,7 +322,7 @@ export const projects = [
     outcome: "Accessible and informative web experience",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/utahseniorplanning-1.jpg",
+      "/images/projects/utahseniorplanning.jpg",
     projectUrl: "https://www.utahseniorplanning.com/",
     color: "#1B6BFF",
   },
@@ -338,7 +338,7 @@ export const projects = [
     outcome: "Modern and engaging web experience",
     technology: "WordPress",
     image:
-      "https://outstripinfotech.com/wp-content/uploads/2023/01/kathirolleatery-1.jpg",
+      "/images/projects/kathirolleatery.jpg",
     projectUrl: "http://www.thekathirollexpress.com",
     color: "#0077B6",
   },

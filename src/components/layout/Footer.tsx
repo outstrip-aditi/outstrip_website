@@ -33,7 +33,7 @@ export function Footer() {
       <div className="container-wide relative px-4 py-16 md:py-20 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-5 lg:gap-16 xl:gap-20">
           <div className="lg:col-span-2">
-            <Link href="/" className="group relative z-50 flex items-center">
+            <Link href="/" className="group relative z-30 flex items-center">
               <img
                 src="/images/footer-logo.png"
                 alt="Outstrip"

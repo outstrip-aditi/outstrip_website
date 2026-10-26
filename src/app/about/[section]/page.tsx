@@ -179,41 +179,62 @@ export default async function AboutSectionPage({
     return (
         <PageShell>
 
-            <section className="section-pad relative overflow-hidden bg-ink py-24 text-white md:py-32 lg:py-40">
-                <div className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.6)_1px,transparent_1px)] [background-size:70px_70px]" />
+            <section className="section-pad relative isolate overflow-hidden bg-[#f8fafc] py-24 text-slate-900 md:py-32 lg:pt-36 lg:pb-16">
+                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white via-[#f8fafc] to-[#eef4ff]" />
 
-                <div className="pointer-events-none absolute -right-32 top-0 h-[500px] w-[500px] rounded-full bg-accent/[0.1] blur-[140px]" />
-
+                <div
+                    className="pointer-events-none absolute inset-0 -z-10 opacity-[0.55]"
+                    style={{
+                        backgroundImage: `
+                linear-gradient(rgba(51,65,85,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(51,65,85,0.07) 1px, transparent 1px)
+            `,
+                        backgroundSize: "60px 60px",
+                        maskImage:
+                            "linear-gradient(to bottom, black 0%, black 65%, transparent 100%)",
+                        WebkitMaskImage:
+                            "linear-gradient(to bottom, black 0%, black 65%, transparent 100%)",
+                    }}
+                />
+                <div className="pointer-events-none absolute -right-32 -top-24 -z-10 h-[420px] w-[420px] rounded-full bg-accent/[0.10] blur-[120px]" />
+                <div className="pointer-events-none absolute -bottom-40 -left-32 -z-10 h-[350px] w-[350px] rounded-full bg-blue-200/30 blur-[110px]" />
                 <div className="container-wide relative z-10">
                     <Reveal>
                         <Link
                             href="/about"
-                            className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/50 transition-colors hover:text-accent-bright"
+                            className="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-slate-600 shadow-sm transition-all duration-300 hover:border-accent/40 hover:text-accent"
                         >
-                            <FiArrowRight className="h-3.5 w-3.5 rotate-180 transition-transform group-hover:-translate-x-1" />
-
+                            <FiArrowRight className="h-3.5 w-3.5 rotate-180 transition-transform duration-300 group-hover:-translate-x-1" />
                             Back to about
                         </Link>
                     </Reveal>
 
                     <Reveal delay={0.08}>
-                        <div className="mt-10 max-w-5xl">
-                            <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-accent-bright">
+                        <div className="mt-10 max-w-5xl md:mt-10">
+                            <p className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.24em] text-accent">
+                                <span className="h-px w-8 bg-accent" />
                                 {content.eyebrow}
                             </p>
 
-                            <h1 className="mt-5 font-display text-5xl font-semibold leading-[0.98] tracking-[-0.04em] sm:text-6xl md:text-7xl lg:text-[82px]">
+                            <h1 className="mt-6 max-w-4xl font-display text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-slate-950 sm:text-5xl md:text-7xl lg:text-[72px]">
                                 {content.title}
                             </h1>
 
-                            <p className="mt-7 max-w-2xl text-base leading-8 text-white/55 md:text-lg">
+                            {/* Description */}
+                            <p className="mt-7 max-w-2xl text-sm leading-8 text-slate-600 sm:text-lg sm:leading-9">
                                 {content.description}
                             </p>
+
+                            {/* Accent divider */}
+                            <div className="mt-6 h-1 w-16 rounded-full bg-accent/20">
+                                <div className="h-full w-2/3 rounded-full bg-accent" />
+                            </div>
+
                         </div>
                     </Reveal>
+
                 </div>
             </section>
-
 
             <section className="section-pad py-20 md:py-28">
                 <div className="container-wide">
