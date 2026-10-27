@@ -1,18 +1,19 @@
 import { blogPosts, type BlogPost } from "@/lib/data";
-import { blogImages, images, teamPhotos, type ImageAsset } from "@/lib/images";
+import { blogImages, images, type ImageAsset } from "@/lib/images";
 
 export type EnrichedBlogPost = BlogPost & {
   image: ImageAsset;
   authorAvatar: ImageAsset;
 };
 
+const AUTHOR_AVATAR: ImageAsset = { src: "/images/favicon.png", alt: "Outstrip Infotech" };
 const FALLBACK_IMAGE: ImageAsset = images.services;
 
-function enrich(post: BlogPost, index: number): EnrichedBlogPost {
+function enrich(post: BlogPost): EnrichedBlogPost {
   return {
     ...post,
     image: blogImages[post.slug] ?? FALLBACK_IMAGE,
-    authorAvatar: teamPhotos[index % teamPhotos.length],
+    authorAvatar: AUTHOR_AVATAR,
   };
 }
 

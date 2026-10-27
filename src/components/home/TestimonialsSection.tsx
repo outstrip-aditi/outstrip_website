@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { InfiniteCardSlider } from "@/components/ui/InfiniteCardSlider";
 import { TestimonialCard } from "@/components/testimonials/TestimonialCard";
+import { FiArrowRight } from "react-icons/fi";
 
 const cards = testimonials.map((testimonial, index) => (
   <TestimonialCard
@@ -13,7 +14,7 @@ const cards = testimonials.map((testimonial, index) => (
   />
 ));
 
-export function TestimonialsSection() {
+export function TestimonialsSection({ showViewAll = true }: { showViewAll?: boolean }) {
   return (
     <section className="relative overflow-hidden bg-ink pb-20 pt-18 md:pb-24 md:pt-20">
       <div className="section-pad container-wide">
@@ -26,9 +27,16 @@ export function TestimonialsSection() {
               description="Delivery quality measured by the people who ship with us."
             />
 
-            <MagneticButton href="/testimonials" variant="secondary" className="shrink-0 self-start border-white/20 bg-transparent text-white hover:border-accent-bright hover:text-accent-bright md:self-auto">
-              View all testimonials
-            </MagneticButton>
+            {showViewAll && (
+              <MagneticButton
+                href="/testimonials"
+                variant="secondary"
+                className="shrink-0 self-start border-white/20 bg-transparent text-white hover:border-accent-bright hover:text-accent-bright md:self-auto"
+              >
+                View all testimonials
+                <FiArrowRight className="ml-2 h-4 w-4" />
+              </MagneticButton>
+            )}
           </div>
         </Reveal>
       </div>

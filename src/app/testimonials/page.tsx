@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
-import { siteConfig, testimonials } from "@/lib/data";
+import { siteConfig } from "@/lib/data";
 import { PageHero, PageShell } from "@/components/layout/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { StaggerChildren } from "@/components/ui/StaggerChildren";
 import { MagneticButton } from "@/components/ui/MagneticButton";
-import { TestimonialCard } from "@/components/testimonials/TestimonialCard";
+import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { FiArrowRight } from "react-icons/fi";
 
 export const metadata: Metadata = pageMetadata("/testimonials", { title: "Testimonials", description: `What clients say about working with ${siteConfig.name} — real feedback from the businesses we've built for.` });
@@ -24,25 +22,7 @@ export default function TestimonialsPage() {
         </div>
       </PageHero>
 
-      <section className="section-pad py-18 md:py-20">
-        <div className="container-wide">
-          <Reveal>
-            <SectionHeading
-              eyebrow={`${testimonials.length} client stories`}
-              title="Delivery quality, in their words"
-              description="Feedback collected across web, mobile, e-commerce, and marketing engagements."
-            />
-          </Reveal>
-
-          <StaggerChildren className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <div key={`${testimonial.author}-${index}`} data-stagger-item>
-                <TestimonialCard testimonial={testimonial} className="h-full transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-[0_24px_60px_-30px_rgba(7,17,31,0.3)]" />
-              </div>
-            ))}
-          </StaggerChildren>
-        </div>
-      </section>
+      <TestimonialsSection showViewAll={false} />
 
       <section className="section-pad relative overflow-hidden pb-20 md:pb-20">
         <div className="container-wide relative">

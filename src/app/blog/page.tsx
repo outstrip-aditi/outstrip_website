@@ -35,7 +35,7 @@ export default function BlogPage() {
           )}
 
           {rest.length > 0 && (
-            <StaggerChildren className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+            <StaggerChildren className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
               {rest.map((post) => (
                 <BlogCard key={post.slug} post={post} variant="grid" />
               ))}

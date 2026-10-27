@@ -207,21 +207,29 @@ export const teamMoments: ImageAsset[] = [
 // One image per post slug (see `blogPosts` in lib/data.ts), used on the Blog
 // listing and article pages.
 export const blogImages: Record<string, ImageAsset> = {
-  "modern-web-architecture-2026": {
-    src: "/images/blog/modern-web-architecture-2026.jpg",
-    alt: "Engineer reviewing system architecture diagrams on a large screen",
+  "benefits-of-hiring-a-web-development-company": {
+    src: "/images/blog/live-news2-1.jpg",
+    alt: "Benefits of Hiring a Web Development Company",
   },
-  "mobile-retention-patterns": {
-    src: "/images/services/mobile-apps.jpg",
-    alt: "Mobile app interface displayed on a smartphone in hand",
+  "how-the-bad-design-of-a-website-affects-my-business": {
+    src: "/images/blog/live-news1-1.jpg",
+    alt: "How the Bad Design of a Website Affects My Business",
   },
-  "seo-for-product-sites": {
-    src: "/images/blog/seo-for-product-sites.jpg",
-    alt: "Analytics dashboard showing organic search growth",
+  "benefits-of-hiring-professional-web-design-services-in-jaipur": {
+    src: "/images/blog/live-news4-1.jpg",
+    alt: "Benefits of Hiring Professional Web Design Services in Jaipur",
   },
-  "design-systems-that-scale": {
-    src: "/images/services/ui-ux-design.jpg",
-    alt: "Design system components and UI tokens laid out on a desk",
+  "affordable-pay-per-click-service-india": {
+    src: "/images/blog/live-news3-1.jpg",
+    alt: "Affordable Pay Per Click Service India",
+  },
+  "developing-website-using-cakephp-framework": {
+    src: "/images/blog/live-map2-1.png",
+    alt: "Developing Website Using “CakePHP” Framework",
+  },
+  "how-the-website-for-a-company-can-become-its-best-seller": {
+    src: "/images/blog/live-news2-1.png",
+    alt: "How the Website for a Company Can Become Its Best Seller",
   },
 };
 

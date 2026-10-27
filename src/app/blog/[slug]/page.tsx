@@ -92,9 +92,6 @@ export default async function BlogPostPage({ params }: Props) {
         <div className=" container-max relative">
 
           <div className="mt-6 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-wider text-muted">
-            <span className="rounded-full bg-accent/10 px-3 py-1 text-accent-deep">
-              {post.category}
-            </span>
             <span>{formatDate(post.date, "long")}</span>
             <span className="inline-flex items-center gap-1">
               <FiClock className="h-3.5 w-3.5" />
@@ -207,7 +204,7 @@ export default async function BlogPostPage({ params }: Props) {
                 className="inline-flex items-center gap-2 text-sm font-semibold text-accent-deep transition hover:text-accent"
               >
                 <FiArrowLeft className="h-4 w-4" />
-                Back to all articles
+                Back to all Blogs
               </Link>
             </div>
           </Reveal>
@@ -253,7 +250,6 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </section>
 
-      {/* RELATED ARTICLES  */}
       {relatedPosts.length > 0 && (
         <section className="section-pad border-t border-border py-16 md:py-24">
           <div className="container-wide">
@@ -264,7 +260,7 @@ export default async function BlogPostPage({ params }: Props) {
                     Keep reading
                   </p>
                   <h2 className="font-display mt-2 text-2xl text-ink sm:text-3xl">
-                    Related articles
+                    Related blogs
                   </h2>
                 </div>
                 <Link
