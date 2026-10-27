@@ -156,12 +156,26 @@ img {
   .has-custom-cursor,
   .has-custom-cursor a,
   .has-custom-cursor button,
-  .has-custom-cursor input,
-  .has-custom-cursor textarea,
   .has-custom-cursor select,
   .has-custom-cursor [role="button"] {
     cursor: none;
   }
+
+  /* Typing fields keep the native I-beam so the user can see where to click. */
+  .has-custom-cursor input:not([type="file"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]),
+  .has-custom-cursor textarea {
+    cursor: text;
+  }
+
+  .has-custom-cursor input[type="file"],
+  .has-custom-cursor input[type="file"]::file-selector-button {
+    cursor: pointer;
+  }
+}
+
+input,
+textarea {
+  caret-color: var(--accent-deep);
 }
 
 .custom-cursor-ring {

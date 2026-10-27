@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { SelectInput } from "@/components/ui/SelectInput";
+import { SuccessPopup } from "@/components/ui/SuccessPopup";
 
 const serviceOptions = [
   "Web Development",
@@ -24,6 +25,9 @@ export function ServiceEnquiryForm({
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState("");
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [formKey, setFormKey] = useState(0);
 
   function validate(data: FormData) {
     const next: Record<string, string> = {};
@@ -70,18 +74,52 @@ export function ServiceEnquiryForm({
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
+      setSubmitError("");
       setStatus("error");
       return;
     }
 
+    if (status === "submitting") return;
+
     setStatus("submitting");
+    setSubmitError("");
 
-    // Simulated submission
-    await new Promise((resolve) => setTimeout(resolve, 700));
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: String(data.get("name") ?? "").trim(),
+          email: String(data.get("email") ?? "").trim(),
+          phone: String(data.get("phone") ?? "").trim(),
+          serviceNeeded: String(data.get("serviceNeeded") ?? "").trim(),
+          message: String(data.get("message") ?? "").trim(),
+          page: serviceTitle,
+        }),
+      });
 
-    setStatus("success");
-    setErrors({});
-    form.reset();
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || !result?.success) {
+        throw new Error(
+          result?.message || "Unable to send your enquiry. Please try again.",
+        );
+      }
+
+      setErrors({});
+      setStatus("success");
+      setPopupOpen(true);
+      form.reset();
+      setFormKey((k) => k + 1); // also resets the custom select
+    } catch (error) {
+      console.error("Service enquiry submission failed:", error);
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
+      setStatus("error");
+    }
   }
 
   return (
@@ -99,7 +137,7 @@ export function ServiceEnquiryForm({
       </p>
 
       {/* Form */}
-      <form onSubmit={onSubmit} noValidate className="relative mt-6 space-y-4">
+      <form key={formKey} onSubmit={onSubmit} noValidate className="relative mt-6 space-y-4">
         {/* Full Name + Email */}
         <div className="grid gap-4 sm:grid-cols-2">
           <Field
@@ -172,32 +210,28 @@ export function ServiceEnquiryForm({
           </MagneticButton>
 
           <AnimatePresence mode="wait">
-            {status === "success" && (
-              <motion.p
-                key="success"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="text-sm font-medium text-accent-deep"
-              >
-                Thanks — we&apos;ll be in touch shortly.
-              </motion.p>
-            )}
-
-            {status === "error" && Object.keys(errors).length > 0 && (
+            {status === "error" && (submitError || Object.keys(errors).length > 0) && (
               <motion.p
                 key="error"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 className="text-sm font-medium text-danger"
+                role="alert"
               >
-                Please fix the highlighted fields.
+                {submitError || "Please fix the highlighted fields."}
               </motion.p>
             )}
           </AnimatePresence>
         </div>
       </form>
+
+      <SuccessPopup
+        open={popupOpen}
+        title="Enquiry sent"
+        message="Your enquiry has been sent successfully! Our team will contact you soon."
+        onClose={() => setPopupOpen(false)}
+      />
     </div>
   );
 }

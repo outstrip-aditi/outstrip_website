@@ -15,6 +15,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StaggerChildren } from "@/components/ui/StaggerChildren";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { SuccessPopup } from "@/components/ui/SuccessPopup";
+import { ApplyModal } from "@/components/careers/ApplyModal";
 
 const workModels = [
     {
@@ -39,6 +41,8 @@ const workModels = [
 
 export default function CareersContent() {
     const [openJob, setOpenJob] = useState<string | null>(null);
+    const [applyRole, setApplyRole] = useState<string | null>(null);
+    const [successOpen, setSuccessOpen] = useState(false);
 
     const toggleJob = (jobId: string) => {
         setOpenJob((current) => (current === jobId ? null : jobId));
@@ -135,13 +139,15 @@ export default function CareersContent() {
                                                 : "hover:-translate-y-1 hover:border-accent/30 hover:shadow-[0_25px_30px_-30px_rgba(13,159,138,0.25)]"
                                                 }`}
                                         >
-                                            <button
-                                                type="button"
+                                            <div
                                                 onClick={() => toggleJob(job.id)}
-                                                aria-expanded={isOpen}
                                                 className="flex w-full cursor-pointer items-center justify-between gap-5 p-6 text-left md:p-8"
                                             >
-                                                <div className="min-w-0 flex-1">
+                                                <button
+                                                    type="button"
+                                                    aria-expanded={isOpen}
+                                                    className="min-w-0 flex-1 cursor-pointer text-left"
+                                                >
                                                     {/* META */}
                                                     <div className="flex flex-wrap items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">
                                                         <span>{job.department}</span>
@@ -168,19 +174,19 @@ export default function CareersContent() {
                                                             {job.summary}
                                                         </p>
                                                     )}
-                                                </div>
+                                                </button>
 
                                                 <div className="flex gap-5 items-center">
-                                                    <MagneticButton
-                                                        href={`mailto:info@outstripinfotech.com?subject=Application%20—%20${encodeURIComponent(
-                                                            job.title
-                                                        )}`}
-                                                        variant="primary"
-                                                        size="sm"
-                                                    >
-                                                        Apply
-                                                        <FiArrowRight className="h-4 w-4" />
-                                                    </MagneticButton>
+                                                    <span onClick={(e) => e.stopPropagation()}>
+                                                        <MagneticButton
+                                                            onClick={() => setApplyRole(job.title)}
+                                                            variant="primary"
+                                                            size="sm"
+                                                        >
+                                                            Apply
+                                                            <FiArrowRight className="h-4 w-4" />
+                                                        </MagneticButton>
+                                                    </span>
 
                                                     <span
                                                         className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${isOpen
@@ -191,7 +197,7 @@ export default function CareersContent() {
                                                         <FiChevronDown className={`h-4 w-4 transition-transform duration-500 ${isOpen ? "rotate-180" : "" }`} />
                                                     </span>
                                                 </div>
-                                            </button>
+                                            </div>
 
                                             {/*  EXPANDED CONTENT  */}
                                             <div
@@ -288,9 +294,7 @@ export default function CareersContent() {
                                                                 {/* APPLY */}
                                                                 <div className="mt-7">
                                                                     <MagneticButton
-                                                                        href={`mailto:info@outstripinfotech.com?subject=Application%20—%20${encodeURIComponent(
-                                                                            job.title
-                                                                        )}`}
+                                                                        onClick={() => setApplyRole(job.title)}
                                                                         variant="primary"
                                                                         size="sm"
                                                                     >
@@ -339,6 +343,24 @@ export default function CareersContent() {
                     )}
                 </div>
             </section>
+
+            {applyRole && (
+                <ApplyModal
+                    role={applyRole}
+                    onClose={() => setApplyRole(null)}
+                    onSuccess={() => {
+                        setApplyRole(null);
+                        setSuccessOpen(true);
+                    }}
+                />
+            )}
+
+            <SuccessPopup
+                open={successOpen}
+                title="Application submitted"
+                message="Your application has been submitted successfully. Thank you for your interest in joining our team!"
+                onClose={() => setSuccessOpen(false)}
+            />
         </PageShell>
     );
 }

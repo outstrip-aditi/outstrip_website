@@ -8,7 +8,7 @@ const HOVER_SELECTOR =
   'a, button, input, textarea, select, [role="button"], [data-cursor-hover]';
 
 const TEXT_SELECTOR =
-  'input[type="text"], input[type="email"], input[type="tel"], textarea';
+  'input:not([type="file"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]), textarea';
 
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -49,12 +49,17 @@ export function CustomCursor() {
       ease: "power3.out",
     });
 
+    // Over typing fields the native text cursor is shown instead.
+    let overText = false;
+
     const onMove = (e: MouseEvent) => {
       moveDot(e.clientX);
       moveDotY(e.clientY);
 
       moveRing(e.clientX);
       moveRingY(e.clientY);
+
+      if (overText) return;
 
       gsap.to([dot, ring], {
         opacity: 1,
@@ -68,22 +73,12 @@ export function CustomCursor() {
       if (!target.closest) return;
 
       if (target.closest(TEXT_SELECTOR)) {
-        gsap.to(ring, {
-          scale: 1.25,
-          opacity: 0.8,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-
-        gsap.to(dot, {
-          scale: 1,
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-
+        overText = true;
+        gsap.to([dot, ring], { opacity: 0, duration: 0.15 });
         return;
       }
+
+      overText = false;
 
       if (target.closest(HOVER_SELECTOR)) {
         gsap.to(ring, {
@@ -164,7 +159,7 @@ export function CustomCursor() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-[100] hidden md:block"
+      className="pointer-events-none fixed inset-0 z-[300] hidden md:block"
       aria-hidden
     >
       <div

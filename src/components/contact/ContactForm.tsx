@@ -3,11 +3,13 @@
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { SuccessPopup } from "@/components/ui/SuccessPopup";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sent" | "error">("idle");
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [popupOpen, setPopupOpen] = useState(false);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -38,15 +40,16 @@ export function ContactForm() {
         body: JSON.stringify(payload),
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => null);
 
-      if (!response.ok || !result.success) {
+      if (!response.ok || !result?.success) {
         throw new Error(
-          result.message || "Unable to send your message. Please try again."
+          result?.message || "Unable to send your message. Please try again."
         );
       }
 
       setStatus("sent");
+      setPopupOpen(true);
       form.reset();
     } catch (error) {
       console.error("Contact form submission failed:", error);
@@ -94,19 +97,6 @@ export function ContactForm() {
         </MagneticButton>
 
         <AnimatePresence mode="wait">
-          {status === "sent" && (
-            <motion.p
-              key="success"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className="text-sm font-medium text-accent-deep"
-              role="status"
-            >
-              Thanks — we’ll get back to you shortly.
-            </motion.p>
-          )}
-
           {status === "error" && (
             <motion.p
               key="error"
@@ -121,6 +111,13 @@ export function ContactForm() {
           )}
         </AnimatePresence>
       </div>
+
+      <SuccessPopup
+        open={popupOpen}
+        title="Message sent"
+        message="Thank you for contacting OUTSTRIP! Your message has been sent successfully. Our team will get back to you soon."
+        onClose={() => setPopupOpen(false)}
+      />
     </form>
   );
 }
